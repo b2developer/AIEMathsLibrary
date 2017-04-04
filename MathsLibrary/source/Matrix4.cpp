@@ -1,5 +1,14 @@
 #include "Matrix4.h"
 
-template class Matrix4<float>;
-template class Matrix4<double>;
-template class Matrix4<long double>;
+Matrix4::Matrix4(const BaseMatrix& other) : BaseMatrix(4, 4)
+{
+	checkSize(other);
+
+	for (int m = 0; m < other.M; m++)
+	{
+		for (int n = 0; n < other.N; n++)
+		{
+			mat[m][n] = other.mat[m][n];
+		}
+	}
+}

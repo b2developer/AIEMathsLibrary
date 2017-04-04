@@ -1,5 +1,14 @@
 #include "Matrix3.h"
 
-template class Matrix3<float>;
-template class Matrix3<double>;
-template class Matrix3<long double>;
+Matrix3::Matrix3(const BaseMatrix& other) : BaseMatrix(3, 3)
+{
+	checkSize(other);
+
+	for (int m = 0; m < other.M; m++)
+	{
+		for (int n = 0; n < other.N; n++)
+		{
+			mat[m][n] = other.mat[m][n];
+		}
+	}
+}

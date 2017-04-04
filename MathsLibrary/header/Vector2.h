@@ -1,11 +1,12 @@
 #pragma once
 #include "BaseMatrix.h"
 
-MAT_T
-class Vector2 : public BaseMatrix<T>
+class Vector2 : public BaseMatrix
 {
 public:
-	Vector2() : BaseMatrix<T>(1, 2) {};
-	Vector2(T,T);
+	Vector2() : BaseMatrix(1, 2) {};
+	Vector2(long double, long double);
 	~Vector2() {};
+	Vector2(const BaseMatrix& other);
 };
+

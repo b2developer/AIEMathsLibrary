@@ -9,7 +9,15 @@
 
 int main()
 {
-	Vector4<float>* vec = new Vector4<float>(2.2f, 5.4f, 0.0f, 12.4f);
-	delete vec;
+
+	Vector2 vec1 = { 0.0f, 1.2f };
+	Vector2 vec2 = { 1.4f, 1.0f };
+
+	Vector2 vec3 = vec1 + vec2;
+
+	std::cout << vec1 << std::endl;
+	std::cout << vec2 << std::endl;
+	std::cout << vec3 << std::endl;
+
 	return 0;
 }
