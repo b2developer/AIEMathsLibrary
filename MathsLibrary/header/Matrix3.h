@@ -22,17 +22,17 @@ public:
 	* Matrix3()
 	* argument constructor
 	*
-	* @param float - the 1st element of the 1st row
-	* @param float - the 2nd element of the 1st row
-	* @param float - the 3rd element of the 1st row
+	* @param float - the 1st element of the 1st column
+	* @param float - the 2nd element of the 1st column
+	* @param float - the 3rd element of the 1st column
 	*
-	* @param float - the 1st element of the 2nd row
-	* @param float - the 2nd element of the 2nd row
-	* @param float - the 3rd element of the 2nd row
+	* @param float - the 1st element of the 2nd column
+	* @param float - the 2nd element of the 2nd column
+	* @param float - the 3rd element of the 2nd column
 	*
-	* @param float - the 1st element of the 3rd row
-	* @param float - the 2nd element of the 3rd row
-	* @param float - the 3rd element of the 3rd row
+	* @param float - the 1st element of the 3rd column
+	* @param float - the 2nd element of the 3rd column
+	* @param float - the 3rd element of the 3rd column
 	*/
 	Matrix3(float m11, float m12, float m13, 
 		    float m21, float m22, float m23,

@@ -130,6 +130,16 @@ public:
 	*/
 	Vector3 normalised();
 
+	/*
+	* cross
+	* computes a vector perpendicular to the two 
+	* vectors given
+	*
+	* @param const Vector3 - the other vector to use
+	* @returns Vector3 - the perpendicular vector
+	*/
+	Vector3 cross(const Vector3 other);
+
 	float x = 0, y = 0, z = 0;
 };
 

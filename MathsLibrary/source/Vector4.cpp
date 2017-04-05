@@ -80,6 +80,12 @@ Vector4 Vector4::normalised()
 	return Vector4{ x / mag, y / mag, z / mag, w / mag};
 }
 
+//calculate the perpendicular vector to two others
+Vector4 Vector4::cross(const Vector4 other)
+{
+	return Vector4{ y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, 0 };
+}
+
 
 
 //multiplication operator (reordered)

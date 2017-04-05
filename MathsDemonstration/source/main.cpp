@@ -28,30 +28,5 @@ int main()
 	Vector4 *other;
 	other = &vec41222;
 	
-
-	for (int t = 0; t < 1000; t++)
-	{
-		Matrix4 m4 = {};
-
-		m4[0] = sum4;
-		m4[1] = *other;
-		m4[2] = Vector4(55,55,55,55);
-		m4[3] = *other;
-
-		float * a = (float *)m4;
-
-		for (int i = 0; i < 16; i++)
-		{
-			std::cout << (a[i]) << ' ';
-
-			if ((i + 1) % 4 == 0)
-			{
-				std::cout << '\n';
-			}
-		}
-		
-		std::cout << '\n';
-	}
-
 	return 0;
 }

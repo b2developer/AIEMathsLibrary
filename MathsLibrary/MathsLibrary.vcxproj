@@ -19,10 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\matrix.h" />
+    <ClInclude Include="header\Matrix2.h" />
+    <ClInclude Include="header\Matrix3.h" />
+    <ClInclude Include="header\Matrix4.h" />
+    <ClInclude Include="header\Vector2.h" />
+    <ClInclude Include="header\Vector3.h" />
+    <ClInclude Include="header\Vector4.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\matrix.cpp" />
+    <ClCompile Include="source\Matrix2.cpp" />
+    <ClCompile Include="source\Matrix3.cpp" />
+    <ClCompile Include="source\Matrix4.cpp" />
+    <ClCompile Include="source\Vector2.cpp" />
+    <ClCompile Include="source\Vector3.cpp" />
+    <ClCompile Include="source\Vector4.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5554DFEF-50A5-4872-A292-4D307503F708}</ProjectGuid>
@@ -112,6 +122,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\MathsLibrary\header\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,6 +153,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\MathsLibrary\header\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

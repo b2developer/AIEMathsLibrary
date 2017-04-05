@@ -133,6 +133,18 @@ public:
 	*/
 	Vector4 normalised();
 
+	/*
+	* cross
+	* computes a vector perpendicular to the two
+	* vectors given.
+	* 
+	* implements cross 
+	*
+	* @param const Vector4 - the other vector to use
+	* @returns Vector4 - the perpendicular vector
+	*/
+	Vector4 cross(const Vector4 other);
+
 };
 
 
