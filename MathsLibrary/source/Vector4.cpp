@@ -1,4 +1,5 @@
 #include "Vector4.h"
+#include "Matrix4.h"
 
 //subscript operator
 float & Vector4::operator[](const int index)
@@ -86,6 +87,28 @@ Vector4 Vector4::cross(const Vector4 other)
 	return Vector4{ y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, 0 };
 }
 
+//matrix transformation
+Vector4 Vector4::operator*(Matrix4 matrix)
+{
+	Vector4 product = {};
+
+	//a = Vector that this function is passing through
+	//b = Matrix4 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 4; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 4; i++)
+		{
+			product[bn] = product[bn] + (*this)[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
+}
+
+
 
 
 //multiplication operator (reordered)
@@ -98,4 +121,25 @@ Vector4 operator*(const float scalar, const Vector4 vector)
 Vector4 operator/(const float scalar, const Vector4 vector)
 {
 	return Vector4{ vector.x / scalar, vector.y / scalar, vector.z / scalar, vector.w / scalar};
+}
+
+//matrix transformation (reordered)
+Vector4 operator*(Matrix4 matrix, Vector4 vector)
+{
+	Vector4 product = {};
+
+	//a = Vector4 vector passed into the function
+	//b = Matrix4 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 4; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 4; i++)
+		{
+			product[bn] = product[bn] + vector[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
 }

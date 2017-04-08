@@ -8,7 +8,6 @@
 #include "Matrix2.h"
 #include "Matrix3.h"
 #include "Matrix4.h"
-//#include "Matrix4.h" etc
 
 // TYPEDEFS IF NEEDED
 // typedef glm::vec2 Vector2; etc

@@ -11,10 +11,12 @@ class Matrix2
 {
 public:
 
+	Vector2 mat[2]; //rows of numbers
+
 	/*
 	* Matrix2()
 	* default constructor
-	* fills matrix with an identity
+	* fills matrix with zeroes
 	*/
 	Matrix2();
 
@@ -52,5 +54,35 @@ public:
 	*/
 	operator float *();
 
-	Vector2 mat[2]; //rows of numbers
+	/*
+	* operator*
+	* applys matrix multiplication to two Matrix2s
+	*
+	* @param Matrix2 - the other matrix to use
+	* @returns Matrix2 - the product of the matrices
+	*/
+	Matrix2 operator*(Matrix2 other);
+
+	/*
+	* identity
+	* converts the matrix to an identity matrix
+	* 1 0 0...
+	* 0 1 0...
+	* 0 0 1...
+	* . . .
+	* . . .
+	*
+	* returns void
+	*/
+	void identity();
+
+	/*
+	* setRotate
+	* generates a 2D rotation matrix given the amount of rotation in radians
+	* https://en.wikipedia.org/wiki/Rotation_matrix
+	*
+	* param float - the amount of radians the matrix will represent
+	* returns void
+	*/
+	void setRotate(float radians);
 };

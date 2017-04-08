@@ -1,4 +1,5 @@
 #include "Vector3.h"
+#include "Matrix3.h"
 
 //subscript operator
 float & Vector3::operator[](const int index)
@@ -84,6 +85,27 @@ Vector3 Vector3::cross(const Vector3 other)
 	return Vector3{ y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x };
 }
 
+//matrix transformation
+Vector3 Vector3::operator*(Matrix3 matrix)
+{
+	Vector3 product = {};
+
+	//a = Vector that this function is passing through
+	//b = Matrix3 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 3; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 3; i++)
+		{
+			product[bn] = product[bn] + (*this)[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
+}
+
 
 
 //multiplication operator (reordered)
@@ -96,4 +118,25 @@ Vector3 operator*(const float scalar, const Vector3 vector)
 Vector3 operator/(const float scalar, const Vector3 vector)
 {
 	return Vector3{ vector.x / scalar, vector.y / scalar, vector.z / scalar};
+}
+
+//matrix transformation (reordered)
+Vector3 operator*(Matrix3 matrix, Vector3 vector)
+{
+	Vector3 product = {};
+
+	//a = Vector3 vector passed into the function
+	//b = Matrix3 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 3; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 3; i++)
+		{
+			product[bn] = product[bn] + vector[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
 }

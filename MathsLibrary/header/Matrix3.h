@@ -11,10 +11,12 @@ class Matrix3
 {
 public:
 
+	Vector3 mat[3]; //rows of numbers
+
 	/*
 	* Matrix3()
 	* default constructor
-	* fills matrix with an identity
+	* fills matrix with zeroes
 	*/
 	Matrix3();
 
@@ -61,6 +63,55 @@ public:
 	*/
 	operator float *();
 
+	/*
+	* operator*
+	* applys matrix multiplication to two Matrix3s
+	*
+	* @param const Matrix3 - the other matrix to use
+	* @returns Matrix3 - the product of the matrices
+	*/
+	Matrix3 operator*(const Matrix3 other);
 
-	Vector3 mat[3]; //rows of numbers
+	/*
+	* identity
+	* converts the matrix to an identity matrix
+	* 1 0 0...
+	* 0 1 0...
+	* 0 0 1...
+	* . . .
+	* . . .
+	*
+	* returns void
+	*/
+	void identity();
+
+	/*
+	* setRotateX
+	* generates a 3D rotation matrix around the X axis given the amount of rotation in radians
+	* https://en.wikipedia.org/wiki/Rotation_matrix
+	*
+	* param float - the amount of radians the matrix will represent
+	* returns void
+	*/
+	void setRotateX(float radians);
+
+	/*
+	* setRotateY
+	* generates a 3D rotation matrix around the Y axis given the amount of rotation in radians
+	* https://en.wikipedia.org/wiki/Rotation_matrix
+	*
+	* param float - the amount of radians the matrix will represent
+	* returns void
+	*/
+	void setRotateY(float radians);
+
+	/*
+	* setRotateZ
+	* generates a 3D rotation matrix around the Z axis given the amount of rotation in radians
+	* https://en.wikipedia.org/wiki/Rotation_matrix
+	*
+	* param float - the amount of radians the matrix will represent
+	* returns void
+	*/
+	void setRotateZ(float radians);
 };

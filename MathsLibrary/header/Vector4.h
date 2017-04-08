@@ -1,6 +1,9 @@
 #pragma once
 #include <math.h>
 
+//forward decleration
+class Matrix4;
+
 /*
 * Vector4
 * homogenous 3D coordinate / offset structure
@@ -145,6 +148,15 @@ public:
 	*/
 	Vector4 cross(const Vector4 other);
 
+	/*
+	* operator *
+	* multiplies a vector by a transformation matrix
+	*
+	* @param const Matrix4 matrix - the matrix to transform the vector with
+	* @returns Vector4 - the resultant
+	*/
+	Vector4 operator*(const Matrix4 matrix);
+
 };
 
 
@@ -170,3 +182,13 @@ Vector4 operator*(const float scalar, const Vector4 vector);
 * @returns Vector4 - the resultant
 */
 Vector4 operator/(const float scalar, const Vector4 vector);
+
+/*
+* operator *
+* multiplies a vector by a transformation matrix
+*
+* @param Matrix4 matrix - the matrix to transform the vector with
+* @param Vector4 vector - the vector to copy and apply the transformation to
+* @returns Vector4 - the resultant
+*/
+Vector4 operator*(Matrix4 matrix, Vector4 vector);

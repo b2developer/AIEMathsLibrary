@@ -1,6 +1,9 @@
 #pragma once
 #include <math.h>
 
+//forward decleration
+class Matrix2;
+
 /*
 * Vector2
 * 2D coordinate / offset structure
@@ -129,6 +132,15 @@ public:
 	*/
 	Vector2 normalised();
 
+	/*
+	* operator *
+	* multiplies a vector by a transformation matrix
+	*
+	* @param Matrix2 matrix - the matrix to transform the vector with
+	* @returns Vector2 - the resultant
+	*/
+	Vector2 operator*(Matrix2 matrix);
+
 	float x = 0, y = 0;
 };
 
@@ -155,3 +167,13 @@ Vector2 operator*(const float scalar, const Vector2 vector);
 * @returns Vector2 - the resultant
 */
 Vector2 operator/(const float scalar, const Vector2 vector);
+
+/*
+* operator *
+* multiplies a vector by a transformation matrix
+*
+* @param Matrix2 matrix - the matrix to transform the vector with
+* @param Vector2 vector - the vector to copy and apply the transformation to
+* @returns Vector2 - the resultant
+*/
+Vector2 operator*(Matrix2 matrix, Vector2 vector);

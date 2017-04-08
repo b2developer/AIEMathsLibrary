@@ -16,7 +16,7 @@ public:
 	/*
 	* Matrix4()
 	* default constructor
-	* fills matrix with an identity
+	* fills matrix with zeroes
 	*/
 	Matrix4();
 
@@ -70,4 +70,56 @@ public:
 	* @returns float * - the address of the first item in the matrix
 	*/
 	operator float *();
+
+	/*
+	* operator*
+	* applys matrix multiplication to two Matrix4s
+	*
+	* @param const Matrix4 - the other matrix to use
+	* @returns Matrix4 - the product of the matrices
+	*/
+	Matrix4 operator*(const Matrix4 other);
+
+	/*
+	* identity
+	* converts the matrix to an identity matrix
+	* 1 0 0...
+	* 0 1 0...
+	* 0 0 1...
+	* . . .
+	* . . .
+	*
+	* returns void
+	*/
+	void identity();
+
+	/*
+	* setRotateX
+	* generates a 3D homogeneous rotation matrix around the X axis given the amount of rotation in radians
+	* https://en.wikipedia.org/wiki/Rotation_matrix
+	*
+	* param float - the amount of radians the matrix will represent
+	* returns void
+	*/
+	void setRotateX(float radians);
+
+	/*
+	* setRotateY
+	* generates a 3D homogeneous rotation matrix around the Y axis given the amount of rotation in radians
+	* https://en.wikipedia.org/wiki/Rotation_matrix
+	*
+	* param float - the amount of radians the matrix will represent
+	* returns void
+	*/
+	void setRotateY(float radians);
+
+	/*
+	* setRotateZ
+	* generates a 3D homogeneous rotation matrix around the Z axis given the amount of rotation in radians
+	* https://en.wikipedia.org/wiki/Rotation_matrix
+	*
+	* param float - the amount of radians the matrix will represent
+	* returns void
+	*/
+	void setRotateZ(float radians);
 };

@@ -3,12 +3,12 @@
 //default constructor
 Matrix4::Matrix4()
 {
-	//create an identity matrix
+	//create an empty matrix
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
-			mat[i][j] = i == j ? 1 : 0; //set all diagonal members to 1
+			mat[i][j] = 0.0f;
 		}
 	}
 }
@@ -59,4 +59,74 @@ Matrix4::operator float*()
 {
 	return &mat[0][0];
 }
+
+
+//multiplication operator
+Matrix4 Matrix4::operator*(Matrix4 other)
+{
+	Matrix4 product = {};
+
+	//a = Matrix4 that this function is running through
+	//b = Matrix4 other passed into the function
+
+	//iterate across a's rows
+	for (int am = 0; am < 4; am++)
+	{
+		//iterate across b's columns
+		for (int bn = 0; bn < 4; bn++)
+		{
+			//iterate across a's columns and b's rows
+			for (int i = 0; i < 4; i++)
+			{
+				product[bn][am] = product[bn][am] + mat[i][am] * other.mat[bn][i];
+			}
+		}
+	}
+
+	return product;
+}
+
+//convert to identity matrix
+void Matrix4::identity()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			//checks if the iterators are on a diagonal
+			mat[i][j] = i == j ? 1.0f : 0.0f;
+		}
+	}
+}
+
+//3D homogeneous rotation matrix around X (YZ affected)
+void Matrix4::setRotateX(float radians)
+{
+	identity(); //all other elements are reset
+	mat[1][1] = cosf(radians);
+	mat[1][2] = sinf(radians);
+	mat[2][1] = -sinf(radians);
+	mat[2][2] = cosf(radians);
+}
+
+//3D homogeneous rotation matrix around Y (XZ affected)
+void Matrix4::setRotateY(float radians)
+{
+	identity(); //all other elements are reset
+	mat[0][0] = cosf(radians);
+	mat[0][2] = -sinf(radians);
+	mat[2][0] = sinf(radians);
+	mat[2][2] = cosf(radians);
+}
+
+//3D homogeneous rotation matrix around Z (XY affected)
+void Matrix4::setRotateZ(float radians)
+{
+	identity(); //all other elements are reset
+	mat[0][0] = cosf(radians);
+	mat[0][1] = sinf(radians);
+	mat[1][0] = -sinf(radians);
+	mat[1][1] = cosf(radians);
+}
+
 

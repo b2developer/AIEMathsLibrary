@@ -1,6 +1,9 @@
 #pragma once
 #include <math.h>
 
+//forward decleration
+class Matrix3;
+
 /*
 * Vector3
 * 3D coordinate / offset structure
@@ -140,6 +143,15 @@ public:
 	*/
 	Vector3 cross(const Vector3 other);
 
+	/*
+	* operator *
+	* multiplies a vector by a transformation matrix
+	*
+	* @param const Matrix3 matrix - the matrix to transform the vector with
+	* @returns Vector3 - the resultant
+	*/
+	Vector3 operator*(const Matrix3 matrix);
+
 	float x = 0, y = 0, z = 0;
 };
 
@@ -166,3 +178,13 @@ Vector3 operator*(const float scalar, const Vector3 vector);
 * @returns Vector3 - the resultant
 */
 Vector3 operator/(const float scalar, const Vector3 vector);
+
+/*
+* operator *
+* multiplies a vector by a transformation matrix
+*
+* @param Matrix3 matrix - the matrix to transform the vector with
+* @param Vector3 vector - the vector to copy and apply the transformation to
+* @returns Vector3 - the resultant
+*/
+Vector3 operator*(Matrix3 matrix, Vector3 vector);

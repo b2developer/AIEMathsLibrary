@@ -1,4 +1,5 @@
 #include "Vector2.h"
+#include "Matrix2.h"
 
 //subscript operator
 float & Vector2::operator[](const int index)
@@ -76,6 +77,27 @@ Vector2 Vector2::normalised()
 	return Vector2{ x / mag, y / mag };
 }
 
+//matrix transformation
+Vector2 Vector2::operator*(Matrix2 matrix)
+{
+	Vector2 product = {};
+
+	//a = Vector that this function is passing through
+	//b = Matrix2 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 2; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 2; i++)
+		{
+			product[bn] = product[bn] + (*this)[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
+}
+
 
 
 
@@ -90,4 +112,25 @@ Vector2 operator*(const float scalar, const Vector2 vector)
 Vector2 operator/(const float scalar, const Vector2 vector)
 {
 	return Vector2{ vector.x / scalar, vector.y / scalar };
+}
+
+//matrix transformation (reordered)
+Vector2 operator*(Matrix2 matrix, Vector2 vector)
+{
+	Vector2 product = {};
+
+	//a = Vector2 vector passed into the function
+	//b = Matrix2 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 2; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 2; i++)
+		{
+			product[bn] = product[bn] + vector[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
 }
