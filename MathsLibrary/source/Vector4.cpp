@@ -5,12 +5,13 @@
 #include "Vector3.h"
 
 //all of the decimal types
-template class Vector4<float>;
-template class Vector4<double>;
-template class Vector4<long double>;
+template class Vector4T<float>;
+template class Vector4T<double>;
+template class Vector4T<long double>;
 
 //subscript operator
-float & Vector4::operator[](const int index)
+TEMPLATE
+T & Vector4T<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -22,58 +23,67 @@ float & Vector4::operator[](const int index)
 	}
 }
 
-//cast to float pointer operator
-Vector4::operator float*()
+//cast to T pointer operator
+TEMPLATE
+Vector4T<T>::operator T*()
 {
 	return &x;
 }
 
 //addition operator
-Vector4 Vector4::operator+(const Vector4 other)
+TEMPLATE
+Vector4T<T> Vector4T<T>::operator+(const Vector4T<T> other)
 {
-	return Vector4{ x + other.x, y + other.y, z + other.z , w + other.w };
+	return Vector4T<T>{ x + other.x, y + other.y, z + other.z , w + other.w };
 }
 
 //subtraction operator
-Vector4 Vector4::operator-(const Vector4 other)
+TEMPLATE
+Vector4T<T> Vector4T<T>::operator-(const Vector4T<T> other)
 {
-	return Vector4{ x - other.x, y - other.y, z - other.z, w - other.w };
+	return Vector4T<T>{ x - other.x, y - other.y, z - other.z, w - other.w };
 }
 
 //multiplication operator
-Vector4 Vector4::operator*(const float scalar)
+TEMPLATE
+Vector4T<T> Vector4T<T>::operator*(const T scalar)
 {
-	return Vector4{ x * scalar, y * scalar, z * scalar, w * scalar };
+	return Vector4T<T>{ x * scalar, y * scalar, z * scalar, w * scalar };
 }
 
 //division operator
-Vector4 Vector4::operator/(const float scalar)
+TEMPLATE
+Vector4T<T> Vector4T<T>::operator/(const T scalar)
 {
-	return Vector4{ x / scalar, y / scalar, z * scalar, w * scalar };
+	return Vector4T<T>{ x / scalar, y / scalar, z * scalar, w * scalar };
 }
 
 //dot product
-float Vector4::dot(const Vector4 other)
+TEMPLATE
+T Vector4T<T>::dot(const Vector4T<T> other)
 {
 	return x * other.x + y * other.y + z * other.z + w * other.w;
 }
 
 //squared magnitude calculation
-float Vector4::sqrMagnitude()
+TEMPLATE
+T Vector4T<T>::sqrMagnitude()
 {
 	return x * x + y * y + z * z + w * w;
 }
 
 //magnitude calculation
-float Vector4::magnitude()
+TEMPLATE
+T Vector4T<T>::magnitude()
 {
-	return sqrtf(sqrMagnitude());
+	return (T)sqrt(sqrMagnitude());
 }
 
 //normalise the vector
-void Vector4::normalise()
+TEMPLATE
+void Vector4T<T>::normalise()
 {
-	float mag = magnitude();
+	T mag = magnitude();
 
 	x /= mag;
 	y /= mag;
@@ -82,23 +92,26 @@ void Vector4::normalise()
 }
 
 //calculate the normalised vector
-Vector4 Vector4::normalised()
+TEMPLATE
+Vector4T<T> Vector4T<T>::normalised()
 {
-	float mag = magnitude();
+	T mag = magnitude();
 
-	return Vector4{ x / mag, y / mag, z / mag, w / mag};
+	return Vector4T<T>{ x / mag, y / mag, z / mag, w / mag};
 }
 
 //calculate the perpendicular vector to two others
-Vector4 Vector4::cross(const Vector4 other)
+TEMPLATE
+Vector4T<T> Vector4T<T>::cross(const Vector4T<T> other)
 {
-	return Vector4{ y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, 0 };
+	return Vector4T<T>{ y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x, 0 };
 }
 
 //matrix transformation
-Vector4 Vector4::operator*(Matrix4 matrix)
+TEMPLATE
+Vector4T<T> Vector4T<T>::operator*(Matrix4T<T> matrix)
 {
-	Vector4 product = {};
+	Vector4T<T> product = {};
 
 	//a = Vector that this function is passing through
 	//b = Matrix4 matrix passed into the function
@@ -117,56 +130,23 @@ Vector4 Vector4::operator*(Matrix4 matrix)
 }
 
 //2D swizzle
-Vector2 Vector4::swizzle(int o1, int o2)
+TEMPLATE
+Vector2T<T> Vector4T<T>::swizzle(int o1, int o2)
 {
-	return Vector2((*this)[o1], (*this)[o2]);
+	return Vector2T<T>((*this)[o1], (*this)[o2]);
 }
 
 //3D swizzle
-Vector3 Vector4::swizzle(int o1, int o2, int o3)
+TEMPLATE
+Vector3T<T> Vector4T<T>::swizzle(int o1, int o2, int o3)
 {
-	return Vector3((*this)[o1], (*this)[o2], (*this)[o3]);
+	return Vector3T<T>((*this)[o1], (*this)[o2], (*this)[o3]);
 }
 
 //4D swizzle
-Vector4 Vector4::swizzle(int o1, int o2, int o3, int o4)
+TEMPLATE
+Vector4T<T> Vector4T<T>::swizzle(int o1, int o2, int o3, int o4)
 {
-	return Vector4((*this)[o1], (*this)[o2], (*this)[o3], (*this)[o4]);
+	return Vector4T<T>((*this)[o1], (*this)[o2], (*this)[o3], (*this)[o4]);
 }
 
-
-
-
-
-//multiplication operator (reordered)
-Vector4 operator*(const float scalar, const Vector4 vector)
-{
-	return Vector4{ vector.x * scalar, vector.y * scalar , vector.z * scalar, vector.w * scalar};
-}
-
-//division operator (reordered)
-Vector4 operator/(const float scalar, const Vector4 vector)
-{
-	return Vector4{ vector.x / scalar, vector.y / scalar, vector.z / scalar, vector.w / scalar};
-}
-
-//matrix transformation (reordered)
-Vector4 operator*(Matrix4 matrix, Vector4 vector)
-{
-	Vector4 product = {};
-
-	//a = Vector4 vector passed into the function
-	//b = Matrix4 matrix passed into the function
-
-	//iterate across b's columns and a's rows
-	for (int bn = 0; bn < 4; bn++)
-	{
-		//iterate across a's rows and b's columns
-		for (int i = 0; i < 4; i++)
-		{
-			product[bn] = product[bn] + vector[i] * matrix.mat[i][bn];
-		}
-	}
-
-	return product;
-}

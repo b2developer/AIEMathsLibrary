@@ -1,13 +1,13 @@
 #include "Matrix2.h"
 
 //all of the decimal types
-template class Matrix2<float>;
-template class Matrix2<double>;
-template class Matrix2<long double>;
+template class Matrix2T<float>;
+template class Matrix2T<double>;
+template class Matrix2T<long double>;
 
 //default constructor
 TEMPLATE
-Matrix2<T>::Matrix2()
+Matrix2T<T>::Matrix2T()
 {
 	//create an empty matrix
 	for (int i = 0; i < 2; i++)
@@ -21,7 +21,7 @@ Matrix2<T>::Matrix2()
 
 //argument constructor
 TEMPLATE
-Matrix2<T>::Matrix2(T m11, T m12, T m21, T m22)
+Matrix2T<T>::Matrix2T(T m11, T m12, T m21, T m22)
 {
 	//assign the arguments individually
 	mat[0][0] = m11;
@@ -32,7 +32,7 @@ Matrix2<T>::Matrix2(T m11, T m12, T m21, T m22)
 
 //subscript operator
 TEMPLATE
-Vector2<T> & Matrix2<T>::operator[](const int index)
+Vector2T<T> & Matrix2T<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -44,19 +44,19 @@ Vector2<T> & Matrix2<T>::operator[](const int index)
 
 //cast to T pointer overload
 TEMPLATE
-Matrix2<T>::operator T*()
+Matrix2T<T>::operator T*()
 {
 	return &mat[0][0];
 }
 
 //multiplication operator
 TEMPLATE
-Matrix2<T> Matrix2<T>::operator*(Matrix2<T> other)
+Matrix2T<T> Matrix2T<T>::operator*(Matrix2T<T> other)
 {
-	Matrix2<T> product = {};
+	Matrix2T<T> product = {};
 
-	//a = Matrix2 that this function is running through
-	//b = Matrix2 other passed into the function
+	//a = Matrix2T that this function is running through
+	//b = Matrix2T other passed into the function
 
 	//iterate across a's rows
 	for (int am = 0; am < 2; am++)
@@ -77,7 +77,7 @@ Matrix2<T> Matrix2<T>::operator*(Matrix2<T> other)
 
 //convert to identity matrix
 TEMPLATE
-void Matrix2<T>::identity()
+void Matrix2T<T>::identity()
 {
 	for (int i = 0; i < 2; i++)
 	{
@@ -91,10 +91,10 @@ void Matrix2<T>::identity()
 
 //rotation matrix
 TEMPLATE
-void Matrix2<T>::setRotate(T radians)
+void Matrix2T<T>::setRotate(T radians)
 {
-	mat[0][0] = cos(radians);
-	mat[0][1] = sin(radians);
-	mat[1][0] = -sin(radians);
-	mat[1][1] = cos(radians);
+	mat[0][0] = (T)cos(radians);
+	mat[0][1] = (T)sin(radians);
+	mat[1][0] = (T)-sin(radians);
+	mat[1][1] = (T)cos(radians);
 }

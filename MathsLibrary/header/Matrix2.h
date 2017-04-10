@@ -2,28 +2,28 @@
 #include "Vector2.h"
 
 /*
-* Matrix2
+* Matrix2T
 * template class
 * 2x2 matrix structure
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
 TEMPLATE
-class Matrix2
+class Matrix2T
 {
 public:
 
-	Vector2 mat[2]; //rows of numbers
+	Vector2T<T> mat[2]; //rows of numbers
 
 	/*
-	* Matrix2()
+	* Matrix2T()
 	* default constructor
 	* fills matrix with zeroes
 	*/
-	Matrix2();
+	Matrix2T();
 
 	/*
-	* Matrix2()
+	* Matrix2T()
 	* argument constructor
 	*
 	* @param T - the 1st element of the 1st row
@@ -31,22 +31,22 @@ public:
 	* @param T - the 1st element of the 2nd row
 	* @param T - the 2nd element of the 2nd row
 	*/
-	Matrix2(T m11, T m12, T m21, T m22);
+	Matrix2T(T m11, T m12, T m21, T m22);
 
 	/*
-	* Matrix2()
+	* Matrix2T()
 	* default destructor
 	*/
-	~Matrix2() {};
+	~Matrix2T() {};
 
 	/*
 	* operator[]
 	* subscript overload
 	*
 	* @param const int - the axis to access
-	* @returns Vector2& - the axis accessed
+	* @returns Vector2T& - the axis accessed
 	*/
-	Vector2& operator[](const int index);
+	Vector2T<T>& operator[](const int index);
 
 	/*
 	* operator T *
@@ -58,12 +58,12 @@ public:
 
 	/*
 	* operator*
-	* applys matrix multiplication to two Matrix2s
+	* applys matrix multiplication to two Matrix2Ts
 	*
-	* @param Matrix2 - the other matrix to use
-	* @returns Matrix2 - the product of the matrices
+	* @param Matrix2T - the other matrix to use
+	* @returns Matrix2T - the product of the matrices
 	*/
-	Matrix2<T> operator*(Matrix2<T> other);
+	Matrix2T<T> operator*(Matrix2T<T> other);
 
 	/*
 	* identity
@@ -88,3 +88,5 @@ public:
 	*/
 	void setRotate(T radians);
 };
+
+using Matrix2 = Matrix2T<float>;

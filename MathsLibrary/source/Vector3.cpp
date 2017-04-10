@@ -5,12 +5,13 @@
 #include "Vector4.h"
 
 //all of the decimal types
-template class Vector3<float>;
-template class Vector3<double>;
-template class Vector3<long double>;
+template class Vector3T<float>;
+template class Vector3T<double>;
+template class Vector3T<long double>;
 
 //subscript operator
-float & Vector3::operator[](const int index)
+TEMPLATE
+T & Vector3T<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -21,58 +22,67 @@ float & Vector3::operator[](const int index)
 	}
 }
 
-//cast to float pointer operator
-Vector3::operator float*()
+//cast to T pointer operator
+TEMPLATE
+Vector3T<T>::operator T*()
 {
 	return &x;
 }
 
 //addition operator
-Vector3 Vector3::operator+(const Vector3 other)
+TEMPLATE
+Vector3T<T> Vector3T<T>::operator+(const Vector3T<T> other)
 {
-	return Vector3{ x + other.x, y + other.y, z + other.z};
+	return Vector3T<T>{ x + other.x, y + other.y, z + other.z};
 }
 
 //subtraction operator
-Vector3 Vector3::operator-(const Vector3 other)
+TEMPLATE
+Vector3T<T> Vector3T<T>::operator-(const Vector3T<T> other)
 {
-	return Vector3{ x - other.x, y - other.y, z - other.z};
+	return Vector3T<T>{ x - other.x, y - other.y, z - other.z};
 }
 
 //multiplication operator
-Vector3 Vector3::operator*(const float scalar)
+TEMPLATE
+Vector3T<T> Vector3T<T>::operator*(const T scalar)
 {
-	return Vector3{ x * scalar, y * scalar, z * scalar };
+	return Vector3T<T>{ x * scalar, y * scalar, z * scalar };
 }
 
 //division operator
-Vector3 Vector3::operator/(const float scalar)
+TEMPLATE
+Vector3T<T> Vector3T<T>::operator/(const T scalar)
 {
-	return Vector3{ x / scalar, y / scalar, z * scalar };
+	return Vector3T<T>{ x / scalar, y / scalar, z * scalar };
 }
 
 //dot product
-float Vector3::dot(const Vector3 other)
+TEMPLATE
+T Vector3T<T>::dot(const Vector3T<T> other)
 {
 	return x * other.x + y * other.y + z * other.z;
 }
 
 //squared magnitude calculation
-float Vector3::sqrMagnitude()
+TEMPLATE
+T Vector3T<T>::sqrMagnitude()
 {
 	return x * x + y * y + z * z;
 }
 
 //magnitude calculation
-float Vector3::magnitude()
+TEMPLATE
+T Vector3T<T>::magnitude()
 {
-	return sqrtf(sqrMagnitude());
+	return (T)sqrt(sqrMagnitude());
 }
 
 //normalise the vector
-void Vector3::normalise()
+TEMPLATE
+void Vector3T<T>::normalise()
 {
-	float mag = magnitude();
+	T mag = magnitude();
 
 	x /= mag;
 	y /= mag;
@@ -80,23 +90,26 @@ void Vector3::normalise()
 }
 
 //calculate the normalised vector
-Vector3 Vector3::normalised()
+TEMPLATE
+Vector3T<T> Vector3T<T>::normalised()
 {
-	float mag = magnitude();
+	T mag = magnitude();
 
-	return Vector3{ x / mag, y / mag, z / mag};
+	return Vector3T<T>{ x / mag, y / mag, z / mag};
 }
 
 //calculate the perpendicular vector to two others
-Vector3 Vector3::cross(const Vector3 other)
+TEMPLATE
+Vector3T<T> Vector3T<T>::cross(const Vector3T<T> other)
 {
-	return Vector3{ y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x };
+	return Vector3T<T>{ y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x };
 }
 
 //matrix transformation
-Vector3 Vector3::operator*(Matrix3 matrix)
+TEMPLATE
+Vector3T<T> Vector3T<T>::operator*(Matrix3T<T> matrix)
 {
-	Vector3 product = {};
+	Vector3T<T> product = {};
 
 	//a = Vector that this function is passing through
 	//b = Matrix3 matrix passed into the function
@@ -115,55 +128,22 @@ Vector3 Vector3::operator*(Matrix3 matrix)
 }
 
 //2D swizzle
-Vector2 Vector3::swizzle(int o1, int o2)
+TEMPLATE
+Vector2T<T> Vector3T<T>::swizzle(int o1, int o2)
 {
-	return Vector2((*this)[o1], (*this)[o2]);
+	return Vector2T<T>((*this)[o1], (*this)[o2]);
 }
 
 //3D swizzle
-Vector3 Vector3::swizzle(int o1, int o2, int o3)
+TEMPLATE
+Vector3T<T> Vector3T<T>::swizzle(int o1, int o2, int o3)
 {
-	return Vector3((*this)[o1], (*this)[o2], (*this)[o3]);
+	return Vector3T<T>((*this)[o1], (*this)[o2], (*this)[o3]);
 }
 
 //4D swizzle
-Vector4 Vector3::swizzle(int o1, int o2, int o3, int o4)
+TEMPLATE
+Vector4T<T> Vector3T<T>::swizzle(int o1, int o2, int o3, int o4)
 {
-	return Vector4((*this)[o1], (*this)[o2], (*this)[o3], (*this)[o4]);
-}
-
-
-
-
-//multiplication operator (reordered)
-Vector3 operator*(const float scalar, const Vector3 vector)
-{
-	return Vector3{ vector.x * scalar, vector.y * scalar , vector.z * scalar};
-}
-
-//division operator (reordered)
-Vector3 operator/(const float scalar, const Vector3 vector)
-{
-	return Vector3{ vector.x / scalar, vector.y / scalar, vector.z / scalar};
-}
-
-//matrix transformation (reordered)
-Vector3 operator*(Matrix3 matrix, Vector3 vector)
-{
-	Vector3 product = {};
-
-	//a = Vector3 vector passed into the function
-	//b = Matrix3 matrix passed into the function
-
-	//iterate across b's columns and a's rows
-	for (int bn = 0; bn < 3; bn++)
-	{
-		//iterate across a's rows and b's columns
-		for (int i = 0; i < 3; i++)
-		{
-			product[bn] = product[bn] + vector[i] * matrix.mat[i][bn];
-		}
-	}
-
-	return product;
+	return Vector4T<T>((*this)[o1], (*this)[o2], (*this)[o3], (*this)[o4]);
 }

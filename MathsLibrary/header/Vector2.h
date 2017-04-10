@@ -5,42 +5,46 @@
 
 //forward decleration
 TEMPLATE
-class Matrix2<T>;
-class Vector3;
-class Vector4;
+class Matrix2T;
+
+TEMPLATE
+class Vector3T;
+
+TEMPLATE
+class Vector4T;
 
 /*
-* Vector2
+* Vector2T
 * template class
 * 2D coordinate / offset structure
 * 
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
 TEMPLATE
-class Vector2
+class Vector2T
 {
 public:
 
 	/*
-	* Vector2()
+	* Vector2T()
 	* default constructor
 	*/
-	Vector2() {};
+	Vector2T() {};
 
 	/*
-	* Vector2()
+	* Vector2T()
 	* argument constructor
 	*
 	* @param T - the x coordinate
 	* @param T - the y coordinate
 	*/
-	Vector2(T _x, T _y) { x = _x; y = _y; };
+	Vector2T(T _x, T _y) { x = _x; y = _y; };
 
 	/*
-	* Vector2()
+	* Vector2T()
 	* default destructor
 	*/
-	~Vector2() {};
+	~Vector2T() {};
 
 	/*
 	* operator[]
@@ -57,53 +61,53 @@ public:
 	*
 	* @returns T * - the address of the first item in the vector
 	*/
-	operator T *();
+	operator T*();
 
 	/*
 	* operator +
 	* adds 2 vectors together
 	*
-	* @param const Vector2 - the other vector to use
-	* @returns Vector2 - the sum
+	* @param const Vector2T - the other vector to use
+	* @returns Vector2T - the sum
 	*/
-	Vector2 operator+(const Vector2 other);
+	Vector2T operator+(const Vector2T other);
 
 	/*
 	* operator -
 	* subtracts the other vector from the first
 	*
-	* @param const Vector2 - the other vector to use
-	* @returns Vector2 - the resultant
+	* @param const Vector2T - the other vector to use
+	* @returns Vector2T - the resultant
 	*/
-	Vector2 operator-(const Vector2 other);
+	Vector2T operator-(const Vector2T other);
 
 	/*
 	* operator *
 	* multiplies a vector by a scalar
 	*
 	* @param const T scalar - the number to multiply all components by
-	* @returns Vector2 - the resultant
+	* @returns Vector2T - the resultant
 	*/
-	Vector2 operator*(const T scalar);
+	Vector2T operator*(const T scalar);
 
 	/*
 	* operator /
 	* divdes a vector by a scalar
 	*
 	* @param const T scalar - the number to divde all components by
-	* @returns Vector2 - the resultant
+	* @returns Vector2T - the resultant
 	*
 	*/
-	Vector2 operator/(const T scalar);
+	Vector2T operator/(const T scalar);
 
 	/*
 	* dot
 	* calculates the dot product of two vectors
 	*
-	* @param const Vector2 - the other vector to use
+	* @param const Vector2T - the other vector to use
 	* @returns T - the dot product
 	*/
-	T dot(const Vector2 other);
+	T dot(const Vector2T other);
 
 	/*
 	* sqrMagnitude
@@ -135,18 +139,18 @@ public:
 	* creates a normalised version of a vector without
 	* normalising the vector object that called
 	*
-	* @returns Vector2 - a normalised vector
+	* @returns Vector2T<T> - a normalised vector
 	*/
-	Vector2 normalised();
+	Vector2T<T> normalised();
 
 	/*
 	* operator *
 	* multiplies a vector by a transformation matrix
 	*
 	* @param Matrix2 matrix - the matrix to transform the vector with
-	* @returns Vector2 - the resultant
+	* @returns Vector2T<T> - the resultant
 	*/
-	Vector2 operator*(Matrix2<T> matrix);
+	Vector2T<T> operator*(Matrix2T<T> matrix);
 
 	/*
 	* swizzle
@@ -154,9 +158,9 @@ public:
 	*
 	* @param int - the first order index
 	* @param int - the second order index
-	* @return Vector2 - the new reordered vector 
+	* @return Vector2T<T> - the new reordered vector 
 	*/
-	Vector2 swizzle(int o1, int o2);
+	Vector2T<T> swizzle(int o1, int o2);
 
 	/*
 	* swizzle
@@ -165,9 +169,9 @@ public:
 	* @param int - the first order index
 	* @param int - the second order index
 	* @param int - the third order index
-	* @return Vector3 - the new reordered vector
+	* @return Vector3T<T> - the new reordered vector
 	*/
-	Vector3 swizzle(int o1, int o2, int o3);
+	Vector3T<T> swizzle(int o1, int o2, int o3);
 
 	/*
 	* swizzle
@@ -177,16 +181,14 @@ public:
 	* @param int - the second order index
 	* @param int - the third order index
 	* @param int - the fourth order index
-	* @return Vector4 - the new reordered vector
+	* @return Vector4T<T> - the new reordered vector
 	*/
-	Vector4 swizzle(int o1, int o2, int o3, int o4);
+	Vector4T<T> swizzle(int o1, int o2, int o3, int o4);
 
 	T x = 0, y = 0;
 };
 
-
-
-
+using Vector2 = Vector2T<float>;
 
 /*
 * operator *
@@ -194,11 +196,20 @@ public:
 * multiplies a vector by a scalar
 *
 * @param const float scalar - the number to multiply all components by
-* @param const Vector2<T> vector - the vector to multiply
-* @returns Vector2<T> - the resultant
+* @param const Vector2T<T> vector - the vector to multiply
+* @returns Vector2T<T> - the resultant
 */
 TEMPLATE
-Vector2<T> operator*(const float scalar, const Vector2<T> vector);
+Vector2T<T> operator*(const float scalar, const Vector2T<T> vector);
+
+//multiplication operator (reordered)
+TEMPLATE
+Vector2T<T> operator*(const float scalar, const Vector2T<T> vector)
+{
+	return Vector2T<T>{ vector.x * scalar, vector.y * scalar };
+}
+
+
 
 /*
 * operator /
@@ -206,20 +217,51 @@ Vector2<T> operator*(const float scalar, const Vector2<T> vector);
 * divdes a vector by a scalar
 *
 * @param const float scalar - the number to divde all components by
-* @param const Vector2<T> vector - the vector to divide
-* @returns Vector2<T> - the resultant
+* @param const Vector2T<T> vector - the vector to divide
+* @returns Vector2T<T> - the resultant
 */
 TEMPLATE
-Vector2<T> operator/(const float scalar, const Vector2<T> vector);
+Vector2T<T> operator/(const float scalar, const Vector2T<T> vector);
+
+//division operator (reordered)
+TEMPLATE
+Vector2T<T> operator/(const float scalar, const Vector2T<T> vector)
+{
+	return Vector2T<T>{ vector.x / scalar, vector.y / scalar };
+}
+
+
 
 /*
 * operator *
 * template function
 * multiplies a vector by a transformation matrix
 *
-* @param Matrix2<T> matrix - the matrix to transform the vector with
-* @param Vector2<T> vector - the vector to copy and apply the transformation to
-* @returns Vector2<T> - the resultant
+* @param Matrix2T<T> matrix - the matrix to transform the vector with
+* @param Vector2T<T> vector - the vector to copy and apply the transformation to
+* @returns Vector2T<T> - the resultant
 */
 TEMPLATE
-Vector2<T> operator*(Matrix2<T> matrix, Vector2<T> vector);
+Vector2T<T> operator*(Matrix2T<T> matrix, Vector2T<T> vector);
+
+//matrix transformation (reordered)
+TEMPLATE
+Vector2T<T> operator*(Matrix2T<T> matrix, Vector2T<T> vector)
+{
+	Vector2T<T> product = {};
+
+	//a = Vector2T<T> vector passed into the function
+	//b = Matrix2 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 2; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 2; i++)
+		{
+			product[bn] = product[bn] + vector[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
+}

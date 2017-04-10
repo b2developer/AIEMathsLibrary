@@ -7,18 +7,10 @@
 #include "Matrix3.h"
 #include "Matrix4.h"
 
-//extern "C"
-//{
-#include <Foo.h>
-
-//}
-
 int main()
 {
-//	Foo foo;
 
-	Foo *f = makeFoo();
-
+	Vector2T<double> newVec = { 0.1123123123, 0.147256723 };
 
 	Vector2 vec2 = { 0.1f, 0.1f };
 	Vector2 vec3 = { 1.2f, 1.5f };

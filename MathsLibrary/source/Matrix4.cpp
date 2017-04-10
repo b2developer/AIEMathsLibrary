@@ -1,13 +1,13 @@
 #include "Matrix4.h"
 
 //all of the decimal types
-template class Matrix4<float>;
-template class Matrix4<double>;
-template class Matrix4<long double>;
+template class Matrix4T<float>;
+template class Matrix4T<double>;
+template class Matrix4T<long double>;
 
 TEMPLATE
 //default constructor
-Matrix4<T>::Matrix4()
+Matrix4T<T>::Matrix4T()
 {
 	//create an empty matrix
 	for (int i = 0; i < 4; i++)
@@ -21,7 +21,7 @@ Matrix4<T>::Matrix4()
 
 //argument constructor
 TEMPLATE
-Matrix4<T>::Matrix4(T m11, T m12, T m13, T m14, 
+Matrix4T<T>::Matrix4T(T m11, T m12, T m13, T m14, 
 				 T m21, T m22, T m23, T m24,
 				 T m31, T m32, T m33, T m34,
 				 T m41, T m42, T m43, T m44)
@@ -50,7 +50,7 @@ Matrix4<T>::Matrix4(T m11, T m12, T m13, T m14,
 
 //subscript operator
 TEMPLATE
-Vector4<T> & Matrix4<T>::operator[](const int index)
+Vector4T<T> & Matrix4T<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -64,7 +64,7 @@ Vector4<T> & Matrix4<T>::operator[](const int index)
 
 //cast to T pointer overload
 TEMPLATE
-Matrix4<T>::operator T*()
+Matrix4T<T>::operator T*()
 {
 	return &mat[0][0];
 }
@@ -72,12 +72,12 @@ Matrix4<T>::operator T*()
 
 //multiplication operator
 TEMPLATE
-Matrix4<T> Matrix4<T>::operator*(Matrix4<T> other)
+Matrix4T<T> Matrix4T<T>::operator*(Matrix4T<T> other)
 {
-	Matrix4<T> product = {};
+	Matrix4T<T> product = {};
 
-	//a = Matrix4<T> that this function is running through
-	//b = Matrix4<T> other passed into the function
+	//a = Matrix4T<T> that this function is running through
+	//b = Matrix4T<T> other passed into the function
 
 	//iterate across a's rows
 	for (int am = 0; am < 4; am++)
@@ -98,7 +98,7 @@ Matrix4<T> Matrix4<T>::operator*(Matrix4<T> other)
 
 //convert to identity matrix
 TEMPLATE
-void Matrix4<T>::identity()
+void Matrix4T<T>::identity()
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -112,35 +112,35 @@ void Matrix4<T>::identity()
 
 //3D homogeneous rotation matrix around X (YZ affected)
 TEMPLATE
-void Matrix4<T>::setRotateX(T radians)
+void Matrix4T<T>::setRotateX(T radians)
 {
 	identity(); //all other elements are reset
-	mat[1][1] = cosf(radians);
-	mat[1][2] = sinf(radians);
-	mat[2][1] = -sinf(radians);
-	mat[2][2] = cosf(radians);
+	mat[1][1] = (T)cos(radians);
+	mat[1][2] = (T)sin(radians);
+	mat[2][1] = (T)-sin(radians);
+	mat[2][2] = (T)cos(radians);
 }
 
 //3D homogeneous rotation matrix around Y (XZ affected)
 TEMPLATE
-void Matrix4<T>::setRotateY(T radians)
+void Matrix4T<T>::setRotateY(T radians)
 {
 	identity(); //all other elements are reset
-	mat[0][0] = cosf(radians);
-	mat[0][2] = -sinf(radians);
-	mat[2][0] = sinf(radians);
-	mat[2][2] = cosf(radians);
+	mat[0][0] = (T)cos(radians);
+	mat[0][2] = (T)-sin(radians);
+	mat[2][0] = (T)sin(radians);
+	mat[2][2] = (T)cos(radians);
 }
 
 //3D homogeneous rotation matrix around Z (XY affected)
 TEMPLATE
-void Matrix4<T>::setRotateZ(T radians)
+void Matrix4T<T>::setRotateZ(T radians)
 {
 	identity(); //all other elements are reset
-	mat[0][0] = cosf(radians);
-	mat[0][1] = sinf(radians);
-	mat[1][0] = -sinf(radians);
-	mat[1][1] = cosf(radians);
+	mat[0][0] = (T)cos(radians);
+	mat[0][1] = (T)sin(radians);
+	mat[1][0] = (T)-sin(radians);
+	mat[1][1] = (T)cos(radians);
 }
 
 

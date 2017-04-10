@@ -5,128 +5,128 @@
 
 //forward decleration
 TEMPLATE
-class Matrix4<T>;
+class Matrix4T;
 
 TEMPLATE
-class Vector2<T>;
+class Vector2T;
 
 TEMPLATE
-class Vector3<T>;
+class Vector3T;
 
 /*
-* Vector4
+* Vector4T
 * homogenous 3D coordinate / offset structure
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
 TEMPLATE
-class Vector4
+class Vector4T
 {
 public:
 
-	float x = 0, y = 0, z = 0, w = 0;
+	T x = 0, y = 0, z = 0, w = 0;
 
 	/*
-	* Vector4()
+	* Vector4T()
 	* default constructor
 	*/
-	Vector4() {};
+	Vector4T() {};
 
 	/*
-	* Vector4()
+	* Vector4T()
 	* argument constructor
 	*
-	* @param float - the x coordinate
-	* @param float - the y coordinate
-	* @param float - the z coordinate
-	* @param float - the w coordinate
+	* @param T - the x coordinate
+	* @param T - the y coordinate
+	* @param T - the z coordinate
+	* @param T - the w coordinate
 	*/
-	Vector4(float _x, float _y, float _z, float _w) { x = _x; y = _y; z = _z; w = _w; };
+	Vector4T(T _x, T _y, T _z, T _w) { x = _x; y = _y; z = _z; w = _w; };
 
 	/*
-	* Vector4()
+	* Vector4T()
 	* default destructor
 	*/
-	~Vector4() {};
+	~Vector4T() {};
 
 	/*
 	* operator[]
 	* subscript overload
 	*
 	* @param const int - the axis to access
-	* @returns float& - the axis accessed
+	* @returns T& - the axis accessed
 	*/
-	float& operator[](const int index);
+	T& operator[](const int index);
 
 	/*
-	* operator float *
-	* cast to float pointer overload
+	* operator T *
+	* cast to T pointer overload
 	*
-	* @returns float * - the address of the first item in the vector
+	* @returns T * - the address of the first item in the vector
 	*/
-	operator float *();
+	operator T*();
 
 	/*
 	* operator +
 	* adds 2 vectors together
 	*
-	* @param const Vector4 - the other vector to use
-	* @returns Vector4 - the sum
+	* @param const Vector4T - the other vector to use
+	* @returns Vector4T - the sum
 	*/
-	Vector4 operator+(const Vector4 other);
+	Vector4T operator+(const Vector4T other);
 
 	/*
 	* operator -
 	* subtracts the other vector from the first
 	*
-	* @param const Vector4 - the other vector to use
-	* @returns Vector4 - the resultant
+	* @param const Vector4T - the other vector to use
+	* @returns Vector4T - the resultant
 	*/
-	Vector4 operator-(const Vector4 other);
+	Vector4T operator-(const Vector4T other);
 
 	/*
 	* operator *
 	* multiplies a vector by a scalar
 	*
-	* @param const float scalar - the number to multiply all components by
-	* @returns Vector4 - the resultant
+	* @param const T scalar - the number to multiply all components by
+	* @returns Vector4T - the resultant
 	*/
-	Vector4 operator*(const float scalar);
+	Vector4T operator*(const T scalar);
 
 	/*
 	* operator /
 	* divdes a vector by a scalar
 	*
-	* @param const float scalar - the number to divde all components by
-	* @returns Vector4 - the resultant
+	* @param const T scalar - the number to divde all components by
+	* @returns Vector4T - the resultant
 	*
 	*/
-	Vector4 operator/(const float scalar);
+	Vector4T operator/(const T scalar);
 
 	/*
 	* dot
 	* calculates the dot product of two vectors
 	*
-	* @param const Vector4 - the other vector to use
-	* @returns float - the dot product
+	* @param const Vector4T - the other vector to use
+	* @returns T - the dot product
 	*/
-	float dot(const Vector4 other);
+	T dot(const Vector4T other);
 
 	/*
 	* sqrMagnitude
 	* calculates the squared length of a vector
 	*
-	* @returns float - the squared length of the vector
+	* @returns T - the squared length of the vector
 	*/
-	float sqrMagnitude();
+	T sqrMagnitude();
 
 	/*
 	* magnitude
 	* calculates the length of a vector
 	*
-	* @returns float - the length of the vector
+	* @returns T - the length of the vector
 	*/
-	float magnitude();
+	T magnitude();
 
 	/*
 	* normalise
@@ -142,9 +142,9 @@ public:
 	* creates a normalised version of a vector without
 	* normalising the vector object that called
 	*
-	* @returns Vector4 - a normalised vector
+	* @returns Vector4T - a normalised vector
 	*/
-	Vector4 normalised();
+	Vector4T normalised();
 
 	/*
 	* cross
@@ -153,19 +153,19 @@ public:
 	* 
 	* implements cross 
 	*
-	* @param const Vector4 - the other vector to use
-	* @returns Vector4 - the perpendicular vector
+	* @param const Vector4T - the other vector to use
+	* @returns Vector4T - the perpendicular vector
 	*/
-	Vector4 cross(const Vector4 other);
+	Vector4T cross(const Vector4T other);
 
 	/*
 	* operator *
 	* multiplies a vector by a transformation matrix
 	*
-	* @param const Matrix4 matrix - the matrix to transform the vector with
-	* @returns Vector4 - the resultant
+	* @param const Matrix4T matrix - the matrix to transform the vector with
+	* @returns Vector4T - the resultant
 	*/
-	Vector4 operator*(const Matrix4 matrix);
+	Vector4T operator*(const Matrix4T<T> matrix);
 
 	/*
 	* swizzle
@@ -173,9 +173,9 @@ public:
 	*
 	* @param int - the first order index
 	* @param int - the second order index
-	* @return Vector2 - the new reordered vector
+	* @return Vector2T<T> - the new reordered vector
 	*/
-	Vector2 swizzle(int o1, int o2);
+	Vector2T<T> swizzle(int o1, int o2);
 
 	/*
 	* swizzle
@@ -184,9 +184,9 @@ public:
 	* @param int - the first order index
 	* @param int - the second order index
 	* @param int - the third order index
-	* @return Vector3 - the new reordered vector
+	* @return Vector3T<T> - the new reordered vector
 	*/
-	Vector3 swizzle(int o1, int o2, int o3);
+	Vector3T<T> swizzle(int o1, int o2, int o3);
 
 	/*
 	* swizzle
@@ -196,42 +196,86 @@ public:
 	* @param int - the second order index
 	* @param int - the third order index
 	* @param int - the fourth order index
-	* @return Vector4 - the new reordered vector
+	* @return Vector4T<T> - the new reordered vector
 	*/
-	Vector4 swizzle(int o1, int o2, int o3, int o4);
+	Vector4T<T> swizzle(int o1, int o2, int o3, int o4);
 
 };
 
-
-
-
+using Vector4 = Vector4T<float>;
 
 /*
 * operator *
+* template function
 * multiplies a vector by a scalar
 *
 * @param const float scalar - the number to multiply all components by
-* @param const Vector4 vector - the vector to multiply
-* @returns Vector4 - the resultant
+* @param const Vector4T<T> vector - the vector to multiply
+* @returns Vector4T<T> - the resultant
 */
-Vector4 operator*(const float scalar, const Vector4 vector);
+TEMPLATE
+Vector4T<T> operator*(const float scalar, const Vector4T<T> vector);
+
+//multiplication operator (reordered)
+TEMPLATE
+Vector4T<T> operator*(const float scalar, const Vector4T<T> vector)
+{
+	return Vector4T<T>{ vector.x * scalar, vector.y * scalar, vector.z * scalar, vector.w * scalar};
+}
+
+
 
 /*
 * operator /
+* template function
 * divdes a vector by a scalar
 *
 * @param const float scalar - the number to divde all components by
-* @param const Vector4 vector - the vector to divide
-* @returns Vector4 - the resultant
+* @param const Vector4T<T> vector - the vector to divide
+* @returns Vector4T<T> - the resultant
 */
-Vector4 operator/(const float scalar, const Vector4 vector);
+TEMPLATE
+Vector4T<T> operator/(const float scalar, const Vector4T<T> vector);
+
+//division operator (reordered)
+TEMPLATE
+Vector4T<T> operator/(const float scalar, const Vector4T<T> vector)
+{
+	return Vector4T<T>{ vector.x / scalar, vector.y / scalar, vector.z / scalar, vector.w / scalar};
+}
+
+
 
 /*
 * operator *
+* template function
 * multiplies a vector by a transformation matrix
 *
-* @param Matrix4 matrix - the matrix to transform the vector with
-* @param Vector4 vector - the vector to copy and apply the transformation to
-* @returns Vector4 - the resultant
+* @param Matrix4T<T> matrix - the matrix to transform the vector with
+* @param Vector4T<T> vector - the vector to copy and apply the transformation to
+* @returns Vector4T<T> - the resultant
 */
-Vector4 operator*(Matrix4 matrix, Vector4 vector);
+TEMPLATE
+Vector4T<T> operator*(Matrix4T<T> matrix, Vector4T<T> vector);
+
+//matrix transformation (reordered)
+TEMPLATE
+Vector4T<T> operator*(Matrix4T<T> matrix, Vector4T<T> vector)
+{
+	Vector4T<T> product = {};
+
+	//a = Vector4T<T> vector passed into the function
+	//b = Matrix4 matrix passed into the function
+
+	//iterate across b's columns and a's rows
+	for (int bn = 0; bn < 4; bn++)
+	{
+		//iterate across a's rows and b's columns
+		for (int i = 0; i < 4; i++)
+		{
+			product[bn] = product[bn] + vector[i] * matrix.mat[i][bn];
+		}
+	}
+
+	return product;
+}

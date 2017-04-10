@@ -2,28 +2,28 @@
 #include "Vector3.h"
 
 /*
-* Matrix3
+* Matrix3T
 * template class
 * 3x3 matrix structure
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
 TEMPLATE
-class Matrix3
+class Matrix3T
 {
 public:
 
-	Vector3 mat[3]; //rows of numbers
+	Vector3T<T> mat[3]; //rows of numbers
 
 	/*
-	* Matrix3()
+	* Matrix3T()
 	* default constructor
 	* fills matrix with zeroes
 	*/
-	Matrix3();
+	Matrix3T();
 
 	/*
-	* Matrix3()
+	* Matrix3T()
 	* argument constructor
 	*
 	* @param T - the 1st element of the 1st column
@@ -38,24 +38,24 @@ public:
 	* @param T - the 2nd element of the 3rd column
 	* @param T - the 3rd element of the 3rd column
 	*/
-	Matrix3(T m11, T m12, T m13, 
+	Matrix3T(T m11, T m12, T m13, 
 		    T m21, T m22, T m23,
 			T m31, T m32, T m33);
 
 	/*
-	* Matrix3()
+	* Matrix3T()
 	* default destructor
 	*/
-	~Matrix3() {};
+	~Matrix3T() {};
 
 	/*
 	* operator[]
 	* subscript overload
 	*
 	* @param const int - the axis to access
-	* @returns Vector3& - the axis accessed
+	* @returns Vector3T& - the axis accessed
 	*/
-	Vector3& operator[](const int index);
+	Vector3T<T>& operator[](const int index);
 
 	/*
 	* operator T *
@@ -67,12 +67,12 @@ public:
 
 	/*
 	* operator*
-	* applys matrix multiplication to two Matrix3s
+	* applys matrix multiplication to two Matrix3Ts
 	*
-	* @param const Matrix3 - the other matrix to use
-	* @returns Matrix3 - the product of the matrices
+	* @param const Matrix3T - the other matrix to use
+	* @returns Matrix3T - the product of the matrices
 	*/
-	Matrix3<T> operator*(const Matrix3<T> other);
+	Matrix3T<T> operator*(const Matrix3T<T> other);
 
 	/*
 	* identity
@@ -117,3 +117,5 @@ public:
 	*/
 	void setRotateZ(T radians);
 };
+
+using Matrix3 = Matrix3T<float>;

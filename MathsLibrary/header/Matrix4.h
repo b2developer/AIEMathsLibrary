@@ -2,28 +2,28 @@
 #include "Vector4.h"
 
 /*
-* Matrix4
+* Matrix4T
 * template class
 * 4x4 matrix structure
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
 TEMPLATE
-class Matrix4
+class Matrix4T
 {
 public:
 
-	Vector4 mat[4]; //rows of numbers
+	Vector4T<T> mat[4]; //rows of numbers
 
 	/*
-	* Matrix4()
+	* Matrix4T()
 	* default constructor
 	* fills matrix with zeroes
 	*/
-	Matrix4();
+	Matrix4T();
 
 	/*
-	* Matrix4()
+	* Matrix4T()
 	* argument constructor
 	*
 	* @param T - the 1st element of the 1st column
@@ -46,24 +46,24 @@ public:
 	* @param T - the 3rd element of the 4th column
 	* @param T - the 4th element of the 4th column
 	*/
-	Matrix4(T m11, T m12, T m13, T m14,
+	Matrix4T(T m11, T m12, T m13, T m14,
 			T m21, T m22, T m23, T m24,
 			T m31, T m32, T m33, T m34,
 			T m41, T m42, T m43, T m44);
 	/*
-	* Matrix4()
+	* Matrix4T()
 	* default destructor
 	*/
-	~Matrix4() {};
+	~Matrix4T() {};
 
 	/*
 	* operator[]
 	* subscript overload
 	*
 	* @param const int - the axis to access
-	* @returns Vector4& - the axis accessed
+	* @returns Vector4T& - the axis accessed
 	*/
-	Vector4& operator[](const int index);
+	Vector4T<T>& operator[](const int index);
 
 	/*
 	* operator T *
@@ -75,12 +75,12 @@ public:
 
 	/*
 	* operator*
-	* applys matrix multiplication to two Matrix4s
+	* applys matrix multiplication to two Matrix4Ts
 	*
-	* @param const Matrix4 - the other matrix to use
-	* @returns Matrix4 - the product of the matrices
+	* @param const Matrix4T - the other matrix to use
+	* @returns Matrix4T - the product of the matrices
 	*/
-	Matrix4<T> operator*(const Matrix4<T> other);
+	Matrix4T<T> operator*(const Matrix4T<T> other);
 
 	/*
 	* identity
@@ -125,3 +125,5 @@ public:
 	*/
 	void setRotateZ(T radians);
 };
+
+using Matrix4 = Matrix4T<float>;

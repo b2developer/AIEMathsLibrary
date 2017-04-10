@@ -1,13 +1,13 @@
 #include "Matrix3.h"
 
 //all of the decimal types
-template class Matrix3<float>;
-template class Matrix3<double>;
-template class Matrix3<long double>;
+template class Matrix3T<float>;
+template class Matrix3T<double>;
+template class Matrix3T<long double>;
 
 //default constructor
 TEMPLATE
-Matrix3<T>::Matrix3()
+Matrix3T<T>::Matrix3T()
 {
 	//create an empty matrix
 	for (int i = 0; i < 3; i++)
@@ -21,7 +21,7 @@ Matrix3<T>::Matrix3()
 
 //argument constructor
 TEMPLATE
-Matrix3<T>::Matrix3(T m11, T m12, T m13, 
+Matrix3T<T>::Matrix3T(T m11, T m12, T m13, 
 				 T m21, T m22, T m23, 
 				 T m31, T m32, T m33)
 {
@@ -42,7 +42,7 @@ Matrix3<T>::Matrix3(T m11, T m12, T m13,
 
 //subscript operator
 TEMPLATE
-Vector3<T> & Matrix3<T>::operator[](const int index)
+Vector3T<T> & Matrix3T<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -55,19 +55,19 @@ Vector3<T> & Matrix3<T>::operator[](const int index)
 
 //cast to T pointer overload
 TEMPLATE
-Matrix3<T>::operator T*()
+Matrix3T<T>::operator T*()
 {
 	return &mat[0][0];
 }
 
 //multiplication operator
 TEMPLATE
-Matrix3<T> Matrix3<T>::operator*(Matrix3<T> other)
+Matrix3T<T> Matrix3T<T>::operator*(Matrix3T<T> other)
 {
-	Matrix3<T> product = {};
+	Matrix3T<T> product = {};
 
-	//a = Matrix3<T> that this function is running through
-	//b = Matrix3<T> other passed into the function
+	//a = Matrix3T<T> that this function is running through
+	//b = Matrix3T<T> other passed into the function
 
 	//iterate across a's rows
 	for (int am = 0; am < 3; am++)
@@ -88,7 +88,7 @@ Matrix3<T> Matrix3<T>::operator*(Matrix3<T> other)
 
 //convert to identity matrix
 TEMPLATE
-void Matrix3<T>::identity()
+void Matrix3T<T>::identity()
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -102,34 +102,34 @@ void Matrix3<T>::identity()
 
 //3D rotation matrix around X (YZ affected)
 TEMPLATE
-void Matrix3<T>::setRotateX(T radians)
+void Matrix3T<T>::setRotateX(T radians)
 {
 	identity(); //all other elements are reset
-	mat[1][1] = cosf(radians);
-	mat[1][2] = sinf(radians);
-	mat[2][1] = -sinf(radians);
-	mat[2][2] = cosf(radians);
+	mat[1][1] = (T)cos(radians);
+	mat[1][2] = (T)sin(radians);
+	mat[2][1] = (T)-sin(radians);
+	mat[2][2] = (T)cos(radians);
 }
 
 //3D rotation matrix around Y (XZ affected)
 TEMPLATE
-void Matrix3<T>::setRotateY(T radians)
+void Matrix3T<T>::setRotateY(T radians)
 {
 	identity(); //all other elements are reset
-	mat[0][0] = cosf(radians);
-	mat[0][2] = -sinf(radians);
-	mat[2][0] = sinf(radians);
-	mat[2][2] = cosf(radians);
+	mat[0][0] = (T)cos(radians);
+	mat[0][2] = (T)-sin(radians);
+	mat[2][0] = (T)sin(radians);
+	mat[2][2] = (T)cos(radians);
 }
 
 //3D rotation matrix around Z (XY affected)
 TEMPLATE
-void Matrix3<T>::setRotateZ(T radians)
+void Matrix3T<T>::setRotateZ(T radians)
 {
 	identity(); //all other elements are reset
-	mat[0][0] = cosf(radians);
-	mat[0][1] = sinf(radians);
-	mat[1][0] = -sinf(radians);
-	mat[1][1] = cosf(radians);
+	mat[0][0] = (T)cos(radians);
+	mat[0][1] = (T)sin(radians);
+	mat[1][0] = (T)-sin(radians);
+	mat[1][1] = (T)cos(radians);
 }
 
