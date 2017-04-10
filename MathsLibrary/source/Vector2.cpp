@@ -1,6 +1,9 @@
 #include "Vector2.h"
 #include "Matrix2.h"
 
+#include "Vector3.h"
+#include "Vector4.h"
+
 //subscript operator
 float & Vector2::operator[](const int index)
 {
@@ -96,6 +99,24 @@ Vector2 Vector2::operator*(Matrix2 matrix)
 	}
 
 	return product;
+}
+
+//2D swizzle
+Vector2 Vector2::swizzle(int o1, int o2)
+{
+	return Vector2((*this)[o1], (*this)[o2]);
+}
+
+//3D swizzle
+Vector3 Vector2::swizzle(int o1, int o2, int o3)
+{
+	return Vector3((*this)[o1], (*this)[o2], (*this)[o3]);
+}
+
+//4D swizzle
+Vector4 Vector2::swizzle(int o1, int o2, int o3, int o4)
+{
+	return Vector4((*this)[o1], (*this)[o2], (*this)[o3], (*this)[o4]);
 }
 
 

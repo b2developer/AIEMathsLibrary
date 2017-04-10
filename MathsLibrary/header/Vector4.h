@@ -3,6 +3,8 @@
 
 //forward decleration
 class Matrix4;
+class Vector2;
+class Vector3;
 
 /*
 * Vector4
@@ -156,6 +158,39 @@ public:
 	* @returns Vector4 - the resultant
 	*/
 	Vector4 operator*(const Matrix4 matrix);
+
+	/*
+	* swizzle
+	* 2D swizzling method
+	*
+	* @param int - the first order index
+	* @param int - the second order index
+	* @return Vector2 - the new reordered vector
+	*/
+	Vector2 swizzle(int o1, int o2);
+
+	/*
+	* swizzle
+	* 3D swizzling method
+	*
+	* @param int - the first order index
+	* @param int - the second order index
+	* @param int - the third order index
+	* @return Vector3 - the new reordered vector
+	*/
+	Vector3 swizzle(int o1, int o2, int o3);
+
+	/*
+	* swizzle
+	* 4D swizzling method
+	*
+	* @param int - the first order index
+	* @param int - the second order index
+	* @param int - the third order index
+	* @param int - the fourth order index
+	* @return Vector4 - the new reordered vector
+	*/
+	Vector4 swizzle(int o1, int o2, int o3, int o4);
 
 };
 
