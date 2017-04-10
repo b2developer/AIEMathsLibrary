@@ -4,8 +4,14 @@
 #include "Vector3.h"
 #include "Vector4.h"
 
+//all of the decimal types
+template class Vector2<float>;
+template class Vector2<double>;
+template class Vector2<long double>;
+
 //subscript operator
-float & Vector2::operator[](const int index)
+TEMPLATE
+T & Vector2<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -15,75 +21,86 @@ float & Vector2::operator[](const int index)
 	} 
 }
 
-//cast to float pointer operator
-Vector2::operator float*()
+//cast to T pointer operator
+TEMPLATE
+Vector2<T>::operator T*()
 {
 	return &x;
 }
 
 //addition operator
-Vector2 Vector2::operator+(const Vector2 other)
+TEMPLATE
+Vector2<T> Vector2<T>::operator+(const Vector2<T> other)
 {
-	return Vector2{ x + other.x, y + other.y };
+	return Vector2<T>{ x + other.x, y + other.y };
 }
 
 //subtraction operator
-Vector2 Vector2::operator-(const Vector2 other)
+TEMPLATE
+Vector2<T> Vector2<T>::operator-(const Vector2<T> other)
 {
-	return Vector2{ x - other.x, y - other.y };
+	return Vector2<T>{ x - other.x, y - other.y };
 }
 
 //multiplication operator
-Vector2 Vector2::operator*(const float scalar)
+TEMPLATE
+Vector2<T> Vector2<T>::operator*(const T scalar)
 {
-	return Vector2{ x * scalar, y * scalar };
+	return Vector2<T>{ x * scalar, y * scalar };
 }
 
 //division operator
-Vector2 Vector2::operator/(const float scalar)
+TEMPLATE
+Vector2<T> Vector2<T>::operator/(const T scalar)
 {
-	return Vector2{ x / scalar, y / scalar };
+	return Vector2<T>{ x / scalar, y / scalar };
 }
 
 //dot product
-float Vector2::dot(const Vector2 other)
+TEMPLATE
+T Vector2<T>::dot(const Vector2<T> other)
 {
 	return x * other.x + y * other.y;
 }
 
 //squared magnitude calculation
-float Vector2::sqrMagnitude()
+TEMPLATE
+T Vector2<T>::sqrMagnitude()
 {
 	return x * x + y * y;
 }
 
 //magnitude calculation
-float Vector2::magnitude()
+TEMPLATE
+T Vector2<T>::magnitude()
 {
 	return sqrtf(sqrMagnitude());
 }
 
 //normalise the vector
-void Vector2::normalise()
+TEMPLATE
+void Vector2<T>::normalise()
 {
-	float mag = magnitude();
+	T mag = magnitude();
 
 	x /= mag;
 	y /= mag;
 }
 
 //calculate the normalised vector
-Vector2 Vector2::normalised()
+TEMPLATE
+Vector2<T> Vector2<T>::normalised()
 {
-	float mag = magnitude();
+	T mag = magnitude();
 
-	return Vector2{ x / mag, y / mag };
+	return Vector2<T>{ x / mag, y / mag };
 }
 
 //matrix transformation
-Vector2 Vector2::operator*(Matrix2 matrix)
+TEMPLATE
+Vector2<T> Vector2<T>::operator*(Matrix2 matrix)
 {
-	Vector2 product = {};
+	Vector2<T> product = {};
 
 	//a = Vector that this function is passing through
 	//b = Matrix2 matrix passed into the function
@@ -102,19 +119,22 @@ Vector2 Vector2::operator*(Matrix2 matrix)
 }
 
 //2D swizzle
-Vector2 Vector2::swizzle(int o1, int o2)
+TEMPLATE
+Vector2<T> Vector2<T>::swizzle(int o1, int o2)
 {
-	return Vector2((*this)[o1], (*this)[o2]);
+	return Vector2<T>((*this)[o1], (*this)[o2]);
 }
 
 //3D swizzle
-Vector3 Vector2::swizzle(int o1, int o2, int o3)
+TEMPLATE
+Vector3<T> Vector2<T>::swizzle(int o1, int o2, int o3)
 {
 	return Vector3((*this)[o1], (*this)[o2], (*this)[o3]);
 }
 
 //4D swizzle
-Vector4 Vector2::swizzle(int o1, int o2, int o3, int o4)
+TEMPLATE
+Vector4<T> Vector2<T>::swizzle(int o1, int o2, int o3, int o4)
 {
 	return Vector4((*this)[o1], (*this)[o2], (*this)[o3], (*this)[o4]);
 }
@@ -124,23 +144,23 @@ Vector4 Vector2::swizzle(int o1, int o2, int o3, int o4)
 
 
 //multiplication operator (reordered)
-Vector2 operator*(const float scalar, const Vector2 vector)
+Vector2<T> operator*(const T scalar, const Vector2<T> vector)
 {
-	return Vector2{ vector.x * scalar, vector.y * scalar };
+	return Vector2<T>{ vector.x * scalar, vector.y * scalar };
 }
 
 //division operator (reordered)
-Vector2 operator/(const float scalar, const Vector2 vector)
+Vector2<T> operator/(const T scalar, const Vector2<T> vector)
 {
-	return Vector2{ vector.x / scalar, vector.y / scalar };
+	return Vector2<T>{ vector.x / scalar, vector.y / scalar };
 }
 
 //matrix transformation (reordered)
-Vector2 operator*(Matrix2 matrix, Vector2 vector)
+Vector2<T> operator*(Matrix2 matrix, Vector2<T> vector)
 {
-	Vector2 product = {};
+	Vector2<T> product = {};
 
-	//a = Vector2 vector passed into the function
+	//a = Vector2<T> vector passed into the function
 	//b = Matrix2 matrix passed into the function
 
 	//iterate across b's columns and a's rows

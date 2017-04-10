@@ -1,7 +1,13 @@
 #include "Matrix2.h"
 
+//all of the decimal types
+template class Matrix2<float>;
+template class Matrix2<double>;
+template class Matrix2<long double>;
+
 //default constructor
-Matrix2::Matrix2()
+TEMPLATE
+Matrix2<T>::Matrix2()
 {
 	//create an empty matrix
 	for (int i = 0; i < 2; i++)
@@ -14,7 +20,8 @@ Matrix2::Matrix2()
 }
 
 //argument constructor
-Matrix2::Matrix2(float m11, float m12, float m21, float m22)
+TEMPLATE
+Matrix2<T>::Matrix2(T m11, T m12, T m21, T m22)
 {
 	//assign the arguments individually
 	mat[0][0] = m11;
@@ -24,7 +31,8 @@ Matrix2::Matrix2(float m11, float m12, float m21, float m22)
 }
 
 //subscript operator
-Vector2 & Matrix2::operator[](const int index)
+TEMPLATE
+Vector2<T> & Matrix2<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -34,16 +42,18 @@ Vector2 & Matrix2::operator[](const int index)
 	}
 }
 
-//cast to float pointer overload
-Matrix2::operator float*()
+//cast to T pointer overload
+TEMPLATE
+Matrix2<T>::operator T*()
 {
 	return &mat[0][0];
 }
 
 //multiplication operator
-Matrix2 Matrix2::operator*(Matrix2 other)
+TEMPLATE
+Matrix2<T> Matrix2<T>::operator*(Matrix2<T> other)
 {
-	Matrix2 product = {};
+	Matrix2<T> product = {};
 
 	//a = Matrix2 that this function is running through
 	//b = Matrix2 other passed into the function
@@ -66,7 +76,8 @@ Matrix2 Matrix2::operator*(Matrix2 other)
 }
 
 //convert to identity matrix
-void Matrix2::identity()
+TEMPLATE
+void Matrix2<T>::identity()
 {
 	for (int i = 0; i < 2; i++)
 	{
@@ -79,10 +90,11 @@ void Matrix2::identity()
 }
 
 //rotation matrix
-void Matrix2::setRotate(float radians)
+TEMPLATE
+void Matrix2<T>::setRotate(T radians)
 {
-	mat[0][0] = cosf(radians);
-	mat[0][1] = sinf(radians);
-	mat[1][0] = -sinf(radians);
-	mat[1][1] = cosf(radians);
+	mat[0][0] = cos(radians);
+	mat[0][1] = sin(radians);
+	mat[1][0] = -sin(radians);
+	mat[1][1] = cos(radians);
 }

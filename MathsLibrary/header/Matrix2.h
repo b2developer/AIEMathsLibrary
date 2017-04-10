@@ -3,10 +3,12 @@
 
 /*
 * Matrix2
+* template class
 * 2x2 matrix structure
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
+TEMPLATE
 class Matrix2
 {
 public:
@@ -24,12 +26,12 @@ public:
 	* Matrix2()
 	* argument constructor
 	*
-	* @param float - the 1st element of the 1st row
-	* @param float - the 2nd element of the 1st row
-	* @param float - the 1st element of the 2nd row
-	* @param float - the 2nd element of the 2nd row
+	* @param T - the 1st element of the 1st row
+	* @param T - the 2nd element of the 1st row
+	* @param T - the 1st element of the 2nd row
+	* @param T - the 2nd element of the 2nd row
 	*/
-	Matrix2(float m11, float m12, float m21, float m22);
+	Matrix2(T m11, T m12, T m21, T m22);
 
 	/*
 	* Matrix2()
@@ -47,12 +49,12 @@ public:
 	Vector2& operator[](const int index);
 
 	/*
-	* operator float *
-	* cast to float pointer overload
+	* operator T *
+	* cast to T pointer overload
 	*
-	* @returns float * - the address of the first item in the matrix
+	* @returns T * - the address of the first item in the matrix
 	*/
-	operator float *();
+	operator T *();
 
 	/*
 	* operator*
@@ -61,7 +63,7 @@ public:
 	* @param Matrix2 - the other matrix to use
 	* @returns Matrix2 - the product of the matrices
 	*/
-	Matrix2 operator*(Matrix2 other);
+	Matrix2<T> operator*(Matrix2<T> other);
 
 	/*
 	* identity
@@ -81,8 +83,8 @@ public:
 	* generates a 2D rotation matrix given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param float - the amount of radians the matrix will represent
+	* param T - the amount of radians the matrix will represent
 	* returns void
 	*/
-	void setRotate(float radians);
+	void setRotate(T radians);
 };

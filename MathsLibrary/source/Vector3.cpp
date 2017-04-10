@@ -4,6 +4,11 @@
 #include "Vector2.h"
 #include "Vector4.h"
 
+//all of the decimal types
+template class Vector3<float>;
+template class Vector3<double>;
+template class Vector3<long double>;
+
 //subscript operator
 float & Vector3::operator[](const int index)
 {

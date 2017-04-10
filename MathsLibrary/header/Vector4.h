@@ -1,10 +1,17 @@
 #pragma once
 #include <math.h>
 
+#define TEMPLATE template<typename T>
+
 //forward decleration
-class Matrix4;
-class Vector2;
-class Vector3;
+TEMPLATE
+class Matrix4<T>;
+
+TEMPLATE
+class Vector2<T>;
+
+TEMPLATE
+class Vector3<T>;
 
 /*
 * Vector4
@@ -12,6 +19,7 @@ class Vector3;
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
+TEMPLATE
 class Vector4
 {
 public:

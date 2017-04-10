@@ -1,17 +1,22 @@
 #pragma once
 #include <math.h>
 
+#define TEMPLATE template<typename T>
+
 //forward decleration
-class Matrix3;
+TEMPLATE
+class Matrix3<T>;
 class Vector2;
 class Vector4;
 
 /*
 * Vector3
+* template class
 * 3D coordinate / offset structure
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
+TEMPLATE
 class Vector3
 {
 public:
@@ -26,11 +31,11 @@ public:
 	* Vector3()
 	* argument constructor
 	*
-	* @param float - the x coordinate
-	* @param float - the y coordinate
-	* @param float - the z coordinate
+	* @param T - the x coordinate
+	* @param T - the y coordinate
+	* @param T - the z coordinate
 	*/
-	Vector3(float _x, float _y, float _z) { x = _x; y = _y; z = _z; };
+	Vector3(T _x, T _y, T _z) { x = _x; y = _y; z = _z; };
 
 	/*
 	* Vector3()
@@ -43,17 +48,17 @@ public:
 	* subscript overload
 	*
 	* @param const int - the axis to access
-	* @returns float& - the axis accessed
+	* @returns T& - the axis accessed
 	*/
-	float& operator[](const int index);
+	T& operator[](const int index);
 
 	/*
-	* operator float *
-	* cast to float pointer overload
+	* operator T *
+	* cast to T pointer overload
 	*
-	* @returns float * - the address of the first item in the vector
+	* @returns T * - the address of the first item in the vector
 	*/
-	operator float *();
+	operator T *();
 
 	/*
 	* operator +
@@ -77,45 +82,45 @@ public:
 	* operator *
 	* multiplies a vector by a scalar
 	*
-	* @param const float scalar - the number to multiply all components by
+	* @param const T scalar - the number to multiply all components by
 	* @returns Vector3 - the resultant
 	*/
-	Vector3 operator*(const float scalar);
+	Vector3 operator*(const T scalar);
 
 	/*
 	* operator /
 	* divdes a vector by a scalar
 	*
-	* @param const float scalar - the number to divde all components by
+	* @param const T scalar - the number to divde all components by
 	* @returns Vector3 - the resultant
 	*
 	*/
-	Vector3 operator/(const float scalar);
+	Vector3 operator/(const T scalar);
 
 	/*
 	* dot
 	* calculates the dot product of two vectors
 	*
 	* @param const Vector3 - the other vector to use
-	* @returns float - the dot product
+	* @returns T - the dot product
 	*/
-	float dot(const Vector3 other);
+	T dot(const Vector3 other);
 
 	/*
 	* sqrMagnitude
 	* calculates the squared length of a vector
 	*
-	* @returns float - the squared length of the vector
+	* @returns T - the squared length of the vector
 	*/
-	float sqrMagnitude();
+	T sqrMagnitude();
 
 	/*
 	* magnitude
 	* calculates the length of a vector
 	*
-	* @returns float - the length of the vector
+	* @returns T - the length of the vector
 	*/
-	float magnitude();
+	T magnitude();
 
 	/*
 	* normalise
@@ -187,7 +192,7 @@ public:
 	*/
 	Vector4 swizzle(int o1, int o2, int o3, int o4);
 
-	float x = 0, y = 0, z = 0;
+	T x = 0, y = 0, z = 0;
 };
 
 
@@ -196,30 +201,36 @@ public:
 
 /*
 * operator *
+* template function
 * multiplies a vector by a scalar
 *
-* @param const float scalar - the number to multiply all components by
+* @param const T scalar - the number to multiply all components by
 * @param const Vector3 vector - the vector to multiply
 * @returns Vector3 - the resultant
 */
-Vector3 operator*(const float scalar, const Vector3 vector);
+TEMPLATE
+Vector3 operator*(const T scalar, const Vector3 vector);
 
 /*
 * operator /
+* template function
 * divdes a vector by a scalar
 *
-* @param const float scalar - the number to divde all components by
+* @param const T scalar - the number to divde all components by
 * @param const Vector3 vector - the vector to divide
 * @returns Vector3 - the resultant
 */
-Vector3 operator/(const float scalar, const Vector3 vector);
+TEMPLATE
+Vector3 operator/(const T scalar, const Vector3 vector);
 
 /*
 * operator *
+* template function
 * multiplies a vector by a transformation matrix
 *
 * @param Matrix3 matrix - the matrix to transform the vector with
 * @param Vector3 vector - the vector to copy and apply the transformation to
 * @returns Vector3 - the resultant
 */
+TEMPLATE
 Vector3 operator*(Matrix3 matrix, Vector3 vector);

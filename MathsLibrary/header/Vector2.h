@@ -1,17 +1,22 @@
 #pragma once
 #include <math.h>
 
+#define TEMPLATE template<typename T>
+
 //forward decleration
-class Matrix2;
+TEMPLATE
+class Matrix2<T>;
 class Vector3;
 class Vector4;
 
 /*
 * Vector2
+* template class
 * 2D coordinate / offset structure
 * 
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
+TEMPLATE
 class Vector2
 {
 public:
@@ -26,10 +31,10 @@ public:
 	* Vector2()
 	* argument constructor
 	*
-	* @param float - the x coordinate
-	* @param float - the y coordinate
+	* @param T - the x coordinate
+	* @param T - the y coordinate
 	*/
-	Vector2(float _x, float _y) { x = _x; y = _y; };
+	Vector2(T _x, T _y) { x = _x; y = _y; };
 
 	/*
 	* Vector2()
@@ -42,17 +47,17 @@ public:
 	* subscript overload
 	*
 	* @param const int - the axis to access
-	* @returns float& - the axis accessed
+	* @returns T& - the axis accessed
 	*/
-	float& operator[](const int index);
+	T& operator[](const int index);
 
 	/*
-	* operator float *
-	* cast to float pointer overload
+	* operator T *
+	* cast to T pointer overload
 	*
-	* @returns float * - the address of the first item in the vector
+	* @returns T * - the address of the first item in the vector
 	*/
-	operator float *();
+	operator T *();
 
 	/*
 	* operator +
@@ -76,45 +81,45 @@ public:
 	* operator *
 	* multiplies a vector by a scalar
 	*
-	* @param const float scalar - the number to multiply all components by
+	* @param const T scalar - the number to multiply all components by
 	* @returns Vector2 - the resultant
 	*/
-	Vector2 operator*(const float scalar);
+	Vector2 operator*(const T scalar);
 
 	/*
 	* operator /
 	* divdes a vector by a scalar
 	*
-	* @param const float scalar - the number to divde all components by
+	* @param const T scalar - the number to divde all components by
 	* @returns Vector2 - the resultant
 	*
 	*/
-	Vector2 operator/(const float scalar);
+	Vector2 operator/(const T scalar);
 
 	/*
 	* dot
 	* calculates the dot product of two vectors
 	*
 	* @param const Vector2 - the other vector to use
-	* @returns float - the dot product
+	* @returns T - the dot product
 	*/
-	float dot(const Vector2 other);
+	T dot(const Vector2 other);
 
 	/*
 	* sqrMagnitude
 	* calculates the squared length of a vector
 	*
-	* @returns float - the squared length of the vector
+	* @returns T - the squared length of the vector
 	*/
-	float sqrMagnitude();
+	T sqrMagnitude();
 
 	/*
 	* magnitude
 	* calculates the length of a vector
 	*
-	* @returns float - the length of the vector
+	* @returns T - the length of the vector
 	*/
-	float magnitude();
+	T magnitude();
 
 	/*
 	* normalise
@@ -141,7 +146,7 @@ public:
 	* @param Matrix2 matrix - the matrix to transform the vector with
 	* @returns Vector2 - the resultant
 	*/
-	Vector2 operator*(Matrix2 matrix);
+	Vector2 operator*(Matrix2<T> matrix);
 
 	/*
 	* swizzle
@@ -176,7 +181,7 @@ public:
 	*/
 	Vector4 swizzle(int o1, int o2, int o3, int o4);
 
-	float x = 0, y = 0;
+	T x = 0, y = 0;
 };
 
 
@@ -185,30 +190,36 @@ public:
 
 /*
 * operator *
+* template function
 * multiplies a vector by a scalar
 *
 * @param const float scalar - the number to multiply all components by
-* @param const Vector2 vector - the vector to multiply
-* @returns Vector2 - the resultant
+* @param const Vector2<T> vector - the vector to multiply
+* @returns Vector2<T> - the resultant
 */
-Vector2 operator*(const float scalar, const Vector2 vector);
+TEMPLATE
+Vector2<T> operator*(const float scalar, const Vector2<T> vector);
 
 /*
 * operator /
+* template function
 * divdes a vector by a scalar
 *
 * @param const float scalar - the number to divde all components by
-* @param const Vector2 vector - the vector to divide
-* @returns Vector2 - the resultant
+* @param const Vector2<T> vector - the vector to divide
+* @returns Vector2<T> - the resultant
 */
-Vector2 operator/(const float scalar, const Vector2 vector);
+TEMPLATE
+Vector2<T> operator/(const float scalar, const Vector2<T> vector);
 
 /*
 * operator *
+* template function
 * multiplies a vector by a transformation matrix
 *
-* @param Matrix2 matrix - the matrix to transform the vector with
-* @param Vector2 vector - the vector to copy and apply the transformation to
-* @returns Vector2 - the resultant
+* @param Matrix2<T> matrix - the matrix to transform the vector with
+* @param Vector2<T> vector - the vector to copy and apply the transformation to
+* @returns Vector2<T> - the resultant
 */
-Vector2 operator*(Matrix2 matrix, Vector2 vector);
+TEMPLATE
+Vector2<T> operator*(Matrix2<T> matrix, Vector2<T> vector);

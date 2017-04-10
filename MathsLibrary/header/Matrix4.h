@@ -3,10 +3,12 @@
 
 /*
 * Matrix4
-* 3x3 matrix structure
+* template class
+* 4x4 matrix structure
 *
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
+TEMPLATE
 class Matrix4
 {
 public:
@@ -24,30 +26,30 @@ public:
 	* Matrix4()
 	* argument constructor
 	*
-	* @param float - the 1st element of the 1st column
-	* @param float - the 2nd element of the 1st column
-	* @param float - the 3rd element of the 1st column
-	* @param float - the 4th element of the 1st column
+	* @param T - the 1st element of the 1st column
+	* @param T - the 2nd element of the 1st column
+	* @param T - the 3rd element of the 1st column
+	* @param T - the 4th element of the 1st column
 	*
-	* @param float - the 1st element of the 2nd column
-	* @param float - the 2nd element of the 2nd column
-	* @param float - the 3rd element of the 2nd column
-	* @param float - the 4th element of the 2nd column
+	* @param T - the 1st element of the 2nd column
+	* @param T - the 2nd element of the 2nd column
+	* @param T - the 3rd element of the 2nd column
+	* @param T - the 4th element of the 2nd column
 	*
-	* @param float - the 1st element of the 3rd column
-	* @param float - the 2nd element of the 3rd column
-	* @param float - the 3rd element of the 3rd column
-	* @param float - the 4th element of the 3rd column
+	* @param T - the 1st element of the 3rd column
+	* @param T - the 2nd element of the 3rd column
+	* @param T - the 3rd element of the 3rd column
+	* @param T - the 4th element of the 3rd column
 	*
-	* @param float - the 1st element of the 4th column
-	* @param float - the 2nd element of the 4th column
-	* @param float - the 3rd element of the 4th column
-	* @param float - the 4th element of the 4th column
+	* @param T - the 1st element of the 4th column
+	* @param T - the 2nd element of the 4th column
+	* @param T - the 3rd element of the 4th column
+	* @param T - the 4th element of the 4th column
 	*/
-	Matrix4(float m11, float m12, float m13, float m14,
-			float m21, float m22, float m23, float m24,
-			float m31, float m32, float m33, float m34,
-			float m41, float m42, float m43, float m44);
+	Matrix4(T m11, T m12, T m13, T m14,
+			T m21, T m22, T m23, T m24,
+			T m31, T m32, T m33, T m34,
+			T m41, T m42, T m43, T m44);
 	/*
 	* Matrix4()
 	* default destructor
@@ -64,12 +66,12 @@ public:
 	Vector4& operator[](const int index);
 
 	/*
-	* operator float *
-	* cast to float pointer overload
+	* operator T *
+	* cast to T pointer overload
 	*
-	* @returns float * - the address of the first item in the matrix
+	* @returns T * - the address of the first item in the matrix
 	*/
-	operator float *();
+	operator T *();
 
 	/*
 	* operator*
@@ -78,7 +80,7 @@ public:
 	* @param const Matrix4 - the other matrix to use
 	* @returns Matrix4 - the product of the matrices
 	*/
-	Matrix4 operator*(const Matrix4 other);
+	Matrix4<T> operator*(const Matrix4<T> other);
 
 	/*
 	* identity
@@ -98,28 +100,28 @@ public:
 	* generates a 3D homogeneous rotation matrix around the X axis given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param float - the amount of radians the matrix will represent
+	* param T - the amount of radians the matrix will represent
 	* returns void
 	*/
-	void setRotateX(float radians);
+	void setRotateX(T radians);
 
 	/*
 	* setRotateY
 	* generates a 3D homogeneous rotation matrix around the Y axis given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param float - the amount of radians the matrix will represent
+	* param T - the amount of radians the matrix will represent
 	* returns void
 	*/
-	void setRotateY(float radians);
+	void setRotateY(T radians);
 
 	/*
 	* setRotateZ
 	* generates a 3D homogeneous rotation matrix around the Z axis given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param float - the amount of radians the matrix will represent
+	* param T - the amount of radians the matrix will represent
 	* returns void
 	*/
-	void setRotateZ(float radians);
+	void setRotateZ(T radians);
 };

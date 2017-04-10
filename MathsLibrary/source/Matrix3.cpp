@@ -1,7 +1,13 @@
 #include "Matrix3.h"
 
+//all of the decimal types
+template class Matrix3<float>;
+template class Matrix3<double>;
+template class Matrix3<long double>;
+
 //default constructor
-Matrix3::Matrix3()
+TEMPLATE
+Matrix3<T>::Matrix3()
 {
 	//create an empty matrix
 	for (int i = 0; i < 3; i++)
@@ -14,9 +20,10 @@ Matrix3::Matrix3()
 }
 
 //argument constructor
-Matrix3::Matrix3(float m11, float m12, float m13, 
-				 float m21, float m22, float m23, 
-				 float m31, float m32, float m33)
+TEMPLATE
+Matrix3<T>::Matrix3(T m11, T m12, T m13, 
+				 T m21, T m22, T m23, 
+				 T m31, T m32, T m33)
 {
 	//assign the arguments individually
 	mat[0][0] = m11;
@@ -32,8 +39,10 @@ Matrix3::Matrix3(float m11, float m12, float m13,
 	mat[2][2] = m33;
 }
 
+
 //subscript operator
-Vector3 & Matrix3::operator[](const int index)
+TEMPLATE
+Vector3<T> & Matrix3<T>::operator[](const int index)
 {
 	switch (index)
 	{
@@ -44,19 +53,21 @@ Vector3 & Matrix3::operator[](const int index)
 	}
 }
 
-//cast to float pointer overload
-Matrix3::operator float*()
+//cast to T pointer overload
+TEMPLATE
+Matrix3<T>::operator T*()
 {
 	return &mat[0][0];
 }
 
 //multiplication operator
-Matrix3 Matrix3::operator*(Matrix3 other)
+TEMPLATE
+Matrix3<T> Matrix3<T>::operator*(Matrix3<T> other)
 {
-	Matrix3 product = {};
+	Matrix3<T> product = {};
 
-	//a = Matrix3 that this function is running through
-	//b = Matrix3 other passed into the function
+	//a = Matrix3<T> that this function is running through
+	//b = Matrix3<T> other passed into the function
 
 	//iterate across a's rows
 	for (int am = 0; am < 3; am++)
@@ -76,7 +87,8 @@ Matrix3 Matrix3::operator*(Matrix3 other)
 }
 
 //convert to identity matrix
-void Matrix3::identity()
+TEMPLATE
+void Matrix3<T>::identity()
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -89,7 +101,8 @@ void Matrix3::identity()
 }
 
 //3D rotation matrix around X (YZ affected)
-void Matrix3::setRotateX(float radians)
+TEMPLATE
+void Matrix3<T>::setRotateX(T radians)
 {
 	identity(); //all other elements are reset
 	mat[1][1] = cosf(radians);
@@ -99,7 +112,8 @@ void Matrix3::setRotateX(float radians)
 }
 
 //3D rotation matrix around Y (XZ affected)
-void Matrix3::setRotateY(float radians)
+TEMPLATE
+void Matrix3<T>::setRotateY(T radians)
 {
 	identity(); //all other elements are reset
 	mat[0][0] = cosf(radians);
@@ -109,7 +123,8 @@ void Matrix3::setRotateY(float radians)
 }
 
 //3D rotation matrix around Z (XY affected)
-void Matrix3::setRotateZ(float radians)
+TEMPLATE
+void Matrix3<T>::setRotateZ(T radians)
 {
 	identity(); //all other elements are reset
 	mat[0][0] = cosf(radians);
