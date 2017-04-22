@@ -13,6 +13,13 @@ class Vector3T;
 TEMPLATE
 class Vector4T;
 
+//which orientation to use when calculating the normal
+enum class NormalDirection
+{
+	LEFT,
+	RIGHT,
+};
+
 /*
 * Vector2T
 * template class
@@ -71,6 +78,15 @@ public:
 	* @returns Vector2T - the sum
 	*/
 	Vector2T operator+(const Vector2T other);
+
+	/*
+	* operator +=
+	* adds 2 vectors together
+	*
+	* @param const Vector2T - the other vector to use
+	* @returns void
+	*/
+	void operator+=(const Vector2T other);
 
 	/*
 	* operator -
@@ -151,6 +167,16 @@ public:
 	* @returns Vector2T<T> - the resultant
 	*/
 	Vector2T<T> operator*(Matrix2T<T> matrix);
+
+	/*
+	* normal
+	*
+	* returns the left or normal vector
+	*
+	* @param NormalDirection direction - which normal to calculate (LEFT by default)
+	* @returns Vector2T<T> - the normal vector
+	*/
+	Vector2T<T> normal(NormalDirection direction = NormalDirection::LEFT);
 
 	/*
 	* swizzle

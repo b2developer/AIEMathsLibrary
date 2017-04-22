@@ -37,6 +37,11 @@ Vector4T<T> Vector4T<T>::operator+(const Vector4T<T> other)
 	return Vector4T<T>{ x + other.x, y + other.y, z + other.z , w + other.w };
 }
 
+TEMPLATE
+void Vector4T<T>::operator+=(const Vector4T<T> other)
+{
+	*this = Vector4T<T>{ x + other.x, y + other.y, z + other.z, w + other.w };
+}
 //subtraction operator
 TEMPLATE
 Vector4T<T> Vector4T<T>::operator-(const Vector4T<T> other)
@@ -85,10 +90,13 @@ void Vector4T<T>::normalise()
 {
 	T mag = magnitude();
 
-	x /= mag;
-	y /= mag;
-	z /= mag;
-	w /= mag;
+	if (mag != 0)
+	{
+		x /= mag;
+		y /= mag;
+		z /= mag;
+		w /= mag;
+	}
 }
 
 //calculate the normalised vector
@@ -97,7 +105,14 @@ Vector4T<T> Vector4T<T>::normalised()
 {
 	T mag = magnitude();
 
-	return Vector4T<T>{ x / mag, y / mag, z / mag, w / mag};
+	if (mag == 0)
+	{
+		return Vector4T<T>{};
+	}
+	else
+	{
+		return Vector4T<T>{ x / mag, y / mag, z / mag, w / mag};
+	}
 }
 
 //calculate the perpendicular vector to two others

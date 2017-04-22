@@ -35,6 +35,12 @@ Vector2T<T> Vector2T<T>::operator+(const Vector2T<T> other)
 	return Vector2T<T>{ x + other.x, y + other.y };
 }
 
+TEMPLATE
+void Vector2T<T>::operator+=(const Vector2T<T> other)
+{
+	*this = Vector2T<T>{ x + other.x, y + other.y };
+}
+
 //subtraction operator
 TEMPLATE
 Vector2T<T> Vector2T<T>::operator-(const Vector2T<T> other)
@@ -83,8 +89,11 @@ void Vector2T<T>::normalise()
 {
 	T mag = magnitude();
 
-	x /= mag;
-	y /= mag;
+	if (mag != 0)
+	{
+		x /= mag;
+		y /= mag;
+	}
 }
 
 //calculate the normalised vector
@@ -93,7 +102,14 @@ Vector2T<T> Vector2T<T>::normalised()
 {
 	T mag = magnitude();
 
-	return Vector2T<T>{ x / mag, y / mag };
+	if (mag == 0)
+	{
+		return Vector2T<T>{};
+	}
+	else
+	{
+		return Vector2T<T>{ x / mag, y / mag };
+	}
 }
 
 //matrix transformation
@@ -116,6 +132,18 @@ Vector2T<T> Vector2T<T>::operator*(Matrix2T<T> matrix)
 	}
 
 	return product;
+}
+
+//normal calculation
+TEMPLATE
+Vector2T<T> Vector2T<T>::normal(NormalDirection direction)
+{
+	switch (direction)
+	{
+	case NormalDirection::LEFT: return Vector2T<T>{-y, x};
+	case NormalDirection::RIGHT:return Vector2T<T>{y, -x};
+	default: throw; //this is impossible
+	}
 }
 
 //2D swizzle

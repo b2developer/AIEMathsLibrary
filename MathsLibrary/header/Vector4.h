@@ -76,6 +76,15 @@ public:
 	Vector4T operator+(const Vector4T other);
 
 	/*
+	* operator +=
+	* adds 2 vectors together
+	*
+	* @param const Vector4T - the other vector to use
+	* @returns void
+	*/
+	void operator+=(const Vector4T other);
+
+	/*
 	* operator -
 	* subtracts the other vector from the first
 	*
@@ -151,7 +160,8 @@ public:
 	* computes a vector perpendicular to the two
 	* vectors given.
 	* 
-	* implements cross 
+	* implements cross as if the vector4 is a vector3
+	* and zeroes the w axis
 	*
 	* @param const Vector4T - the other vector to use
 	* @returns Vector4T - the perpendicular vector

@@ -1,4 +1,5 @@
 #include "Matrix4.h"
+#include "Matrix3.h" //determinant process relies on matrix3
 
 //all of the decimal types
 template class Matrix4T<float>;
@@ -141,6 +142,46 @@ void Matrix4T<T>::setRotateZ(T radians)
 	mat[0][1] = (T)sin(radians);
 	mat[1][0] = (T)-sin(radians);
 	mat[1][1] = (T)cos(radians);
+}
+
+//determinant from matrix
+TEMPLATE
+T Matrix4T<T>::determinant()
+{
+	/*
+	* (what each letter represents in the matrix)
+	* a b c d
+	* e f g h
+	* i j k l
+	* m n o p
+	*/
+
+	T a = mat[0][0];
+	T b = mat[0][1];
+	T c = mat[0][2];
+	T d = mat[0][3];
+
+	T e = mat[1][0];
+	T f = mat[1][1];
+	T g = mat[1][2];
+	T h = mat[1][3];
+
+	T i = mat[2][0];
+	T j = mat[2][1];
+	T k = mat[2][2];
+	T l = mat[2][3];
+
+	T m = mat[3][0];
+	T n = mat[3][1];
+	T o = mat[3][2];
+	T p = mat[3][3];
+
+	Matrix3T<T> m1 = Matrix3T<T>{ f,g,h,j,k,l,m,n,o };
+	Matrix3T<T> m2 = Matrix3T<T>{ e,g,h,i,k,l,m,o,p };
+	Matrix3T<T> m3 = Matrix3T<T>{ e,f,h,i,j,l,m,n,p };
+	Matrix3T<T> m4 = Matrix3T<T>{ e,f,g,i,j,k,m,n,o };
+
+	return a * m1.determinant() - b * m2.determinant() + c * m3.determinant() - d * m4.determinant();
 }
 
 

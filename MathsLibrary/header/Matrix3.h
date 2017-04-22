@@ -83,7 +83,7 @@ public:
 	* . . .
 	* . . .
 	*
-	* returns void
+	* @returns void
 	*/
 	void identity();
 
@@ -92,8 +92,8 @@ public:
 	* generates a 3D rotation matrix around the X axis given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param T - the amount of radians the matrix will represent
-	* returns void
+	* @param T - the amount of radians the matrix will represent
+	* @returns void
 	*/
 	void setRotateX(T radians);
 
@@ -102,8 +102,8 @@ public:
 	* generates a 3D rotation matrix around the Y axis given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param T - the amount of radians the matrix will represent
-	* returns void
+	* @param T - the amount of radians the matrix will represent
+	* @returns void
 	*/
 	void setRotateY(T radians);
 
@@ -112,10 +112,27 @@ public:
 	* generates a 3D rotation matrix around the Z axis given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param T - the amount of radians the matrix will represent
-	* returns void
+	* @param T - the amount of radians the matrix will represent
+	* @returns void
 	*/
 	void setRotateZ(T radians);
+
+	/*
+	* determinant
+	* calcualates the determinant of the matrix
+	*
+	* @returns T - the determinant of the matrix
+	*/
+	T determinant();
+
+	/*
+	* invert
+	* inverts the matrix
+	* sometimes matrices aren't invertible
+	*
+	* @returns bool - indicating if the inversion worked or not
+	*/
+	bool invert();
 };
 
 using Matrix3 = Matrix3T<float>;

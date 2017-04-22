@@ -98,3 +98,48 @@ void Matrix2T<T>::setRotate(T radians)
 	mat[1][0] = (T)-sin(radians);
 	mat[1][1] = (T)cos(radians);
 }
+
+//determinant from matrix
+TEMPLATE
+T Matrix2T<T>::determinant()
+{
+	/*
+	* (what each letter represents in the matrix)
+	* a b
+	* c d
+	*/
+
+	T a = mat[0][0];
+	T b = mat[0][1];
+	T c = mat[1][0];
+	T d = mat[1][1];
+
+	return a * d - b * c;
+}
+
+//invert the matrix
+TEMPLATE
+bool Matrix2T<T>::invert()
+{
+	T determinant = this->determinant();
+
+	//matrices can't be inverted 
+	if (determinant == 0)
+	{
+		return false;
+	}
+
+	T a = mat[0][0];
+	T b = mat[0][1];
+
+	T c = mat[1][0];
+	T d = mat[1][1];
+
+	mat[0][0] = d / determinant;
+	mat[0][1] = -b / determinant;
+
+	mat[1][0] = -c / determinant;
+	mat[1][1] = a / determinant;
+
+	return true;
+}

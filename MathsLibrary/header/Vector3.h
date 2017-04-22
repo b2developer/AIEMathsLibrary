@@ -74,6 +74,15 @@ public:
 	Vector3T operator+(const Vector3T other);
 
 	/*
+	* operator +=
+	* adds 2 vectors together
+	*
+	* @param const Vector3T - the other vector to use
+	* @returns void
+	*/
+	void operator+=(const Vector3T other);
+
+	/*
 	* operator -
 	* subtracts the other vector from the first
 	*

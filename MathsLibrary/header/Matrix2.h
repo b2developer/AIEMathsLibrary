@@ -74,7 +74,7 @@ public:
 	* . . .
 	* . . .
 	*
-	* returns void
+	* @returns void
 	*/
 	void identity();
 
@@ -83,10 +83,28 @@ public:
 	* generates a 2D rotation matrix given the amount of rotation in radians
 	* https://en.wikipedia.org/wiki/Rotation_matrix
 	*
-	* param T - the amount of radians the matrix will represent
-	* returns void
+	* @param T - the amount of radians the matrix will represent
+	* @returns void
 	*/
 	void setRotate(T radians);
+
+	/*
+	* determinant
+	* calcualates the determinant of the matrix
+	* 
+	* @returns T - the determinant of the matrix
+	*/
+	T determinant();
+
+	/*
+	* invert
+	* inverts the matrix
+	* sometimes matrices aren't invertible
+	*
+	* @returns bool - indicating if the inversion worked or not
+	*/
+	bool invert();
+
 };
 
 using Matrix2 = Matrix2T<float>;

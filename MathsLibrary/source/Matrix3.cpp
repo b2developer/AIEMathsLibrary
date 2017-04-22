@@ -133,3 +133,84 @@ void Matrix3T<T>::setRotateZ(T radians)
 	mat[1][1] = (T)cos(radians);
 }
 
+//determinant from matrix
+TEMPLATE
+T Matrix3T<T>::determinant()
+{
+	/*
+	* (what each letter represents in the matrix)
+	* a b c
+	* d e f
+	* g h i
+	*/
+
+	T a = mat[0][0];
+	T b = mat[0][1];
+	T c = mat[0][2];
+
+	T d = mat[1][0];
+	T e = mat[1][1];
+	T f = mat[1][2];
+
+	T g = mat[2][0];
+	T h = mat[2][1];
+	T i = mat[2][2];
+
+	//combining the variables
+	T aei = a * i * e; 
+	T bfg = b * f * g;
+	T cdh = c * d * h;
+	T ceg = c * e * g;
+	T bdi = b * d * i;
+	T afh = a * f * h;
+
+	return aei + bfg + cdh - ceg - bdi - afh;
+}
+
+//invert the matrix
+TEMPLATE
+bool Matrix3T<T>::invert()
+{
+	T determinant = this->determinant();
+
+	//matrices can't be inverted 
+	if (determinant == 0)
+	{
+		return false;
+	}
+
+	T a = mat[0][0];
+	T b = mat[0][1];
+	T c = mat[0][2];
+	T d = mat[1][0];
+	T e = mat[1][1];
+	T f = mat[1][2];
+	T g = mat[2][0];
+	T h = mat[2][1];
+	T i = mat[2][2];
+
+	//this is done to make the final inversion step lest clustered
+	T A = (e * i - f * h);
+	T B = -(d * i - f * g);
+	T C = (d * h - e * g);
+	T D = -(b * i - c * h);
+	T E = (a * i - c * g);
+	T F = -(a * h - b * g);
+	T G = (b * f - c * e);
+	T H = -(a * f - c * d);
+	T I = (a * e - b * d);
+
+	mat[0][0] = A / determinant;
+	mat[0][1] = D / determinant;
+	mat[0][2] = G / determinant;
+
+	mat[1][0] = B / determinant;
+	mat[1][1] = E / determinant;
+	mat[1][2] = H / determinant;
+
+	mat[2][0] = C / determinant;
+	mat[2][1] = F / determinant;
+	mat[2][2] = I / determinant;
+
+	return true;
+}

@@ -36,6 +36,13 @@ Vector3T<T> Vector3T<T>::operator+(const Vector3T<T> other)
 	return Vector3T<T>{ x + other.x, y + other.y, z + other.z};
 }
 
+TEMPLATE
+void Vector3T<T>::operator+=(const Vector3T<T> other)
+{
+	*this = Vector3T<T>{ x + other.x, y + other.y, z + other.z};
+}
+
+
 //subtraction operator
 TEMPLATE
 Vector3T<T> Vector3T<T>::operator-(const Vector3T<T> other)
@@ -84,9 +91,12 @@ void Vector3T<T>::normalise()
 {
 	T mag = magnitude();
 
-	x /= mag;
-	y /= mag;
-	z /= mag;
+	if (mag != 0)
+	{
+		x /= mag;
+		y /= mag;
+		z /= mag;
+	}
 }
 
 //calculate the normalised vector
@@ -95,7 +105,14 @@ Vector3T<T> Vector3T<T>::normalised()
 {
 	T mag = magnitude();
 
-	return Vector3T<T>{ x / mag, y / mag, z / mag};
+	if (mag == 0)
+	{
+		return Vector3T<T>{};
+	}
+	else
+	{
+		return Vector3T<T>{ x / mag, y / mag, z / mag};
+	}
 }
 
 //calculate the perpendicular vector to two others
