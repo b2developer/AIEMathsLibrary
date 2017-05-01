@@ -40,7 +40,11 @@ int main()
 	Vector3 vect = { 1.0f, 2.0f, 3.0f};
 	Matrix3 transformer = { 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f, 10.0f, 11.0f, 12.0f};
 
+	vect.x = 0.5f;
+
 	vect = vect * transformer;
 	
+	Vector2 swiz = (vect).swizzle(2, 0);
+
 	return 0;
 }

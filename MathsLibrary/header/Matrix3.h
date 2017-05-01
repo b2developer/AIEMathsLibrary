@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector3.h"
+#include "dllmain.h"
 
 /*
 * Matrix3T
@@ -20,7 +21,7 @@ public:
 	* default constructor
 	* fills matrix with zeroes
 	*/
-	Matrix3T();
+	MATHSLIBRARY_API Matrix3T();
 
 	/*
 	* Matrix3T()
@@ -38,7 +39,7 @@ public:
 	* @param T - the 2nd element of the 3rd column
 	* @param T - the 3rd element of the 3rd column
 	*/
-	Matrix3T(T m11, T m12, T m13, 
+	MATHSLIBRARY_API  Matrix3T(T m11, T m12, T m13,
 		    T m21, T m22, T m23,
 			T m31, T m32, T m33);
 
@@ -46,7 +47,7 @@ public:
 	* Matrix3T()
 	* default destructor
 	*/
-	~Matrix3T() {};
+	MATHSLIBRARY_API ~Matrix3T() {};
 
 	/*
 	* operator[]
@@ -55,7 +56,7 @@ public:
 	* @param const int - the axis to access
 	* @returns Vector3T& - the axis accessed
 	*/
-	Vector3T<T>& operator[](const int index);
+	MATHSLIBRARY_API Vector3T<T>& operator[](const int index);
 
 	/*
 	* operator T *
@@ -63,7 +64,7 @@ public:
 	*
 	* @returns T * - the address of the first item in the matrix
 	*/
-	operator T *();
+	MATHSLIBRARY_API operator T *();
 
 	/*
 	* operator*
@@ -72,7 +73,7 @@ public:
 	* @param const Matrix3T - the other matrix to use
 	* @returns Matrix3T - the product of the matrices
 	*/
-	Matrix3T<T> operator*(const Matrix3T<T> other);
+	MATHSLIBRARY_API Matrix3T<T> operator*(const Matrix3T<T> other);
 
 	/*
 	* identity
@@ -85,7 +86,7 @@ public:
 	*
 	* @returns void
 	*/
-	void identity();
+	MATHSLIBRARY_API void identity();
 
 	/*
 	* setRotateX
@@ -95,7 +96,7 @@ public:
 	* @param T - the amount of radians the matrix will represent
 	* @returns void
 	*/
-	void setRotateX(T radians);
+	MATHSLIBRARY_API void setRotateX(T radians);
 
 	/*
 	* setRotateY
@@ -105,7 +106,7 @@ public:
 	* @param T - the amount of radians the matrix will represent
 	* @returns void
 	*/
-	void setRotateY(T radians);
+	MATHSLIBRARY_API void setRotateY(T radians);
 
 	/*
 	* setRotateZ
@@ -115,7 +116,24 @@ public:
 	* @param T - the amount of radians the matrix will represent
 	* @returns void
 	*/
-	void setRotateZ(T radians);
+	MATHSLIBRARY_API void setRotateZ(T radians);
+
+	/*
+	* determinant
+	* calcualates the determinant of the matrix
+	*
+	* @returns T - the determinant of the matrix
+	*/
+	MATHSLIBRARY_API T determinant();
+
+	/*
+	* invert
+	* inverts the matrix
+	* sometimes matrices aren't invertible
+	*
+	* @returns bool - indicating if the inversion worked or not
+	*/
+	MATHSLIBRARY_API bool invert();
 
 	/*
 	* determinant

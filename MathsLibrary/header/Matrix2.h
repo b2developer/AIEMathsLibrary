@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "dllmain.h"
 
 /*
 * Matrix2T
@@ -20,7 +21,7 @@ public:
 	* default constructor
 	* fills matrix with zeroes
 	*/
-	Matrix2T();
+	MATHSLIBRARY_API Matrix2T();
 
 	/*
 	* Matrix2T()
@@ -31,13 +32,13 @@ public:
 	* @param T - the 1st element of the 2nd row
 	* @param T - the 2nd element of the 2nd row
 	*/
-	Matrix2T(T m11, T m12, T m21, T m22);
+	MATHSLIBRARY_API Matrix2T(T m11, T m12, T m21, T m22);
 
 	/*
 	* Matrix2T()
 	* default destructor
 	*/
-	~Matrix2T() {};
+	MATHSLIBRARY_API ~Matrix2T() {};
 
 	/*
 	* operator[]
@@ -46,7 +47,7 @@ public:
 	* @param const int - the axis to access
 	* @returns Vector2T& - the axis accessed
 	*/
-	Vector2T<T>& operator[](const int index);
+	MATHSLIBRARY_API Vector2T<T>& operator[](const int index);
 
 	/*
 	* operator T *
@@ -54,7 +55,7 @@ public:
 	*
 	* @returns T * - the address of the first item in the matrix
 	*/
-	operator T *();
+	MATHSLIBRARY_API operator T *();
 
 	/*
 	* operator*
@@ -63,7 +64,7 @@ public:
 	* @param Matrix2T - the other matrix to use
 	* @returns Matrix2T - the product of the matrices
 	*/
-	Matrix2T<T> operator*(Matrix2T<T> other);
+	MATHSLIBRARY_API Matrix2T<T> operator*(Matrix2T<T> other);
 
 	/*
 	* identity
@@ -76,7 +77,7 @@ public:
 	*
 	* @returns void
 	*/
-	void identity();
+	MATHSLIBRARY_API void identity();
 
 	/*
 	* setRotate
@@ -86,7 +87,25 @@ public:
 	* @param T - the amount of radians the matrix will represent
 	* @returns void
 	*/
-	void setRotate(T radians);
+	MATHSLIBRARY_API void setRotate(T radians);
+
+	/*
+	* determinant
+	* calcualates the determinant of the matrix
+	* 
+	* @returns T - the determinant of the matrix
+	*/
+	MATHSLIBRARY_API T determinant();
+
+	/*
+	* invert
+	* inverts the matrix
+	* sometimes matrices aren't invertible
+	*
+	* @returns bool - indicating if the inversion worked or not
+	*/
+	MATHSLIBRARY_API bool invert();
+
 
 	/*
 	* determinant

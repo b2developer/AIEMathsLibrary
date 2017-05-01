@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include "dllmain.h"
 
 #define TEMPLATE template<typename T>
 
@@ -30,7 +31,7 @@ public:
 	* Vector4T()
 	* default constructor
 	*/
-	Vector4T() {};
+	MATHSLIBRARY_API Vector4T() {};
 
 	/*
 	* Vector4T()
@@ -41,13 +42,13 @@ public:
 	* @param T - the z coordinate
 	* @param T - the w coordinate
 	*/
-	Vector4T(T _x, T _y, T _z, T _w) { x = _x; y = _y; z = _z; w = _w; };
+	MATHSLIBRARY_API Vector4T(T _x, T _y, T _z, T _w) { x = _x; y = _y; z = _z; w = _w; };
 
 	/*
 	* Vector4T()
 	* default destructor
 	*/
-	~Vector4T() {};
+	MATHSLIBRARY_API ~Vector4T() {};
 
 	/*
 	* operator[]
@@ -56,7 +57,7 @@ public:
 	* @param const int - the axis to access
 	* @returns T& - the axis accessed
 	*/
-	T& operator[](const int index);
+	MATHSLIBRARY_API T& operator[](const int index);
 
 	/*
 	* operator T *
@@ -64,7 +65,7 @@ public:
 	*
 	* @returns T * - the address of the first item in the vector
 	*/
-	operator T*();
+	MATHSLIBRARY_API operator T*();
 
 	/*
 	* operator +
@@ -73,7 +74,7 @@ public:
 	* @param const Vector4T - the other vector to use
 	* @returns Vector4T - the sum
 	*/
-	Vector4T operator+(const Vector4T other);
+	MATHSLIBRARY_API Vector4T operator+(const Vector4T other);
 
 	/*
 	* operator +=
@@ -82,7 +83,7 @@ public:
 	* @param const Vector4T - the other vector to use
 	* @returns void
 	*/
-	void operator+=(const Vector4T other);
+	MATHSLIBRARY_API void operator+=(const Vector4T other);
 
 	/*
 	* operator -
@@ -91,7 +92,7 @@ public:
 	* @param const Vector4T - the other vector to use
 	* @returns Vector4T - the resultant
 	*/
-	Vector4T operator-(const Vector4T other);
+	MATHSLIBRARY_API Vector4T operator-(const Vector4T other);
 
 	/*
 	* operator *
@@ -100,7 +101,7 @@ public:
 	* @param const T scalar - the number to multiply all components by
 	* @returns Vector4T - the resultant
 	*/
-	Vector4T operator*(const T scalar);
+	MATHSLIBRARY_API Vector4T operator*(const T scalar);
 
 	/*
 	* operator /
@@ -110,7 +111,7 @@ public:
 	* @returns Vector4T - the resultant
 	*
 	*/
-	Vector4T operator/(const T scalar);
+	MATHSLIBRARY_API Vector4T operator/(const T scalar);
 
 	/*
 	* dot
@@ -119,7 +120,7 @@ public:
 	* @param const Vector4T - the other vector to use
 	* @returns T - the dot product
 	*/
-	T dot(const Vector4T other);
+	MATHSLIBRARY_API T dot(const Vector4T other);
 
 	/*
 	* sqrMagnitude
@@ -127,7 +128,7 @@ public:
 	*
 	* @returns T - the squared length of the vector
 	*/
-	T sqrMagnitude();
+	MATHSLIBRARY_API T sqrMagnitude();
 
 	/*
 	* magnitude
@@ -135,7 +136,7 @@ public:
 	*
 	* @returns T - the length of the vector
 	*/
-	T magnitude();
+	MATHSLIBRARY_API T magnitude();
 
 	/*
 	* normalise
@@ -144,7 +145,7 @@ public:
 	*
 	* @returns void
 	*/
-	void normalise();
+	MATHSLIBRARY_API void normalise();
 
 	/*
 	* normalise
@@ -153,7 +154,7 @@ public:
 	*
 	* @returns Vector4T - a normalised vector
 	*/
-	Vector4T normalised();
+	MATHSLIBRARY_API Vector4T normalised();
 
 	/*
 	* cross
@@ -166,7 +167,7 @@ public:
 	* @param const Vector4T - the other vector to use
 	* @returns Vector4T - the perpendicular vector
 	*/
-	Vector4T cross(const Vector4T other);
+	MATHSLIBRARY_API Vector4T cross(const Vector4T other);
 
 	/*
 	* operator *
@@ -175,7 +176,7 @@ public:
 	* @param const Matrix4T matrix - the matrix to transform the vector with
 	* @returns Vector4T - the resultant
 	*/
-	Vector4T operator*(const Matrix4T<T> matrix);
+	MATHSLIBRARY_API Vector4T operator*(const Matrix4T<T> matrix);
 
 	/*
 	* swizzle
@@ -185,7 +186,7 @@ public:
 	* @param int - the second order index
 	* @return Vector2T<T> - the new reordered vector
 	*/
-	Vector2T<T> swizzle(int o1, int o2);
+	MATHSLIBRARY_API Vector2T<T> swizzle(int o1, int o2);
 
 	/*
 	* swizzle
@@ -196,7 +197,7 @@ public:
 	* @param int - the third order index
 	* @return Vector3T<T> - the new reordered vector
 	*/
-	Vector3T<T> swizzle(int o1, int o2, int o3);
+	MATHSLIBRARY_API Vector3T<T> swizzle(int o1, int o2, int o3);
 
 	/*
 	* swizzle
@@ -208,7 +209,7 @@ public:
 	* @param int - the fourth order index
 	* @return Vector4T<T> - the new reordered vector
 	*/
-	Vector4T<T> swizzle(int o1, int o2, int o3, int o4);
+	MATHSLIBRARY_API Vector4T<T> swizzle(int o1, int o2, int o3, int o4);
 
 };
 
