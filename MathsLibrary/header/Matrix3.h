@@ -134,23 +134,6 @@ public:
 	* @returns bool - indicating if the inversion worked or not
 	*/
 	MATHSLIBRARY_API bool invert();
-
-	/*
-	* determinant
-	* calcualates the determinant of the matrix
-	*
-	* @returns T - the determinant of the matrix
-	*/
-	T determinant();
-
-	/*
-	* invert
-	* inverts the matrix
-	* sometimes matrices aren't invertible
-	*
-	* @returns bool - indicating if the inversion worked or not
-	*/
-	bool invert();
 };
 
 using Matrix3 = Matrix3T<float>;

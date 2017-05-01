@@ -173,38 +173,1053 @@ public:
 	*/
 	MATHSLIBRARY_API Vector3T operator*(const Matrix3T<T> matrix);
 
+	#pragma region swizzling
 	/*
-	* swizzle
-	* 2D swizzling method
+	* GetXX
 	*
-	* @param int - the first order index
-	* @param int - the second order index
-	* @return Vector2T<T> - the new reordered vector
+	* swizzles vector to (x,x)
+	*
+	* @returns Vector2T<T> - the swizzled vector
 	*/
-	MATHSLIBRARY_API Vector2T<T> swizzle(int o1, int o2);
+	MATHSLIBRARY_API Vector2T<T> GetXX();
 
 	/*
-	* swizzle
-	* 3D swizzling method
+	* GetXY
 	*
-	* @param int - the first order index
-	* @param int - the second order index
-	* @param int - the third order index
-	* @return Vector3T<T> - the new reordered vector
+	* swizzles vector to (x,y)
+	*
+	* @returns Vector2T<T> - the swizzled vector
 	*/
-	MATHSLIBRARY_API Vector3T<T> swizzle(int o1, int o2, int o3);
+	MATHSLIBRARY_API Vector2T<T> GetXY();
 
 	/*
-	* swizzle
-	* 4D swizzling method
+	* GetXZ
 	*
-	* @param int - the first order index
-	* @param int - the second order index
-	* @param int - the third order index
-	* @param int - the fourth order index
-	* @return Vector4T<T> - the new reordered vector
+	* swizzles vector to (x,z)
+	*
+	* @returns Vector2T<T> - the swizzled vector
 	*/
-	MATHSLIBRARY_API Vector4T<T> swizzle(int o1, int o2, int o3, int o4);
+	MATHSLIBRARY_API Vector2T<T> GetXZ();
+
+	/*
+	* GetYX
+	*
+	* swizzles vector to (y,x)
+	*
+	* @returns Vector2T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector2T<T> GetYX();
+
+	/*
+	* GetYY
+	*
+	* swizzles vector to (y,y)
+	*
+	* @returns Vector2T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector2T<T> GetYY();
+
+	/*
+	* GetYZ
+	*
+	* swizzles vector to (y,z)
+	*
+	* @returns Vector2T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector2T<T> GetYZ();
+
+	/*
+	* GetZX
+	*
+	* swizzles vector to (z,x)
+	*
+	* @returns Vector2T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector2T<T> GetZX();
+
+	/*
+	* GetZY
+	*
+	* swizzles vector to (z,y)
+	*
+	* @returns Vector2T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector2T<T> GetZY();
+
+	/*
+	* GetZZ
+	*
+	* swizzles vector to (z,z)
+	*
+	* @returns Vector2T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector2T<T> GetZZ();
+
+	/*
+	* GetXXX
+	*
+	* swizzles vector to (x,x,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXXX();
+
+	/*
+	* GetXXY
+	*
+	* swizzles vector to (x,x,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXXY();
+
+	/*
+	* GetXXZ
+	*
+	* swizzles vector to (x,x,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXXZ();
+
+	/*
+	* GetXYX
+	*
+	* swizzles vector to (x,y,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXYX();
+
+	/*
+	* GetXYY
+	*
+	* swizzles vector to (x,y,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXYY();
+
+	/*
+	* GetXZX
+	*
+	* swizzles vector to (x,z,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXZX();
+
+	/*
+	* GetXZY
+	*
+	* swizzles vector to (x,z,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXZY();
+
+	/*
+	* GetXZZ
+	*
+	* swizzles vector to (x,z,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetXZZ();
+
+	/*
+	* GetYXX
+	*
+	* swizzles vector to (y,x,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYXX();
+
+	/*
+	* GetYXY
+	*
+	* swizzles vector to (y,x,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYXY();
+
+	/*
+	* GetYXZ
+	*
+	* swizzles vector to (y,x,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYXZ();
+
+	/*
+	* GetYYX
+	*
+	* swizzles vector to (y,y,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYYX();
+
+	/*
+	* GetYYY
+	*
+	* swizzles vector to (y,y,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYYY();
+
+	/*
+	* GetYYZ
+	*
+	* swizzles vector to (y,y,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYYZ();
+
+	/*
+	* GetYZX
+	*
+	* swizzles vector to (y,z,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYZX();
+
+	/*
+	* GetYZY
+	*
+	* swizzles vector to (y,z,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYZY();
+
+	/*
+	* GetYZZ
+	*
+	* swizzles vector to (y,z,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetYZZ();
+
+	/*
+	* GetZXX
+	*
+	* swizzles vector to (z,x,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZXX();
+
+	/*
+	* GetZXY
+	*
+	* swizzles vector to (z,x,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZXY();
+
+	/*
+	* GetZXZ
+	*
+	* swizzles vector to (z,x,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZXZ();
+
+	/*
+	* GetZYX
+	*
+	* swizzles vector to (z,y,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZYX();
+
+	/*
+	* GetZYY
+	*
+	* swizzles vector to (z,y,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZYY();
+
+	/*
+	* GetZYZ
+	*
+	* swizzles vector to (z,y,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZYZ();
+
+	/*
+	* GetZZX
+	*
+	* swizzles vector to (z,z,x)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZZX();
+
+	/*
+	* GetZZY
+	*
+	* swizzles vector to (z,z,y)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZZY();
+
+	/*
+	* GetZZZ
+	*
+	* swizzles vector to (z,z,z)
+	*
+	* @returns Vector3T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector3T<T> GetZZZ();
+
+	/*
+	* GetXXXX
+	*
+	* swizzles vector to (x,x,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXXX();
+
+	/*
+	* GetXXXY
+	*
+	* swizzles vector to (x,x,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXXY();
+
+	/*
+	* GetXXXZ
+	*
+	* swizzles vector to (x,x,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXXZ();
+
+	/*
+	* GetXXYX
+	*
+	* swizzles vector to (x,x,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXYX();
+
+	/*
+	* GetXXYY
+	*
+	* swizzles vector to (x,x,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXYY();
+
+	/*
+	* GetXXYZ
+	*
+	* swizzles vector to (x,x,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXYZ();
+
+	/*
+	* GetXXZX
+	*
+	* swizzles vector to (x,x,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXZX();
+
+	/*
+	* GetXXZY
+	*
+	* swizzles vector to (x,x,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXZY();
+
+	/*
+	* GetXXZZ
+	*
+	* swizzles vector to (x,x,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXXZZ();
+
+	/*
+	* GetXYXX
+	*
+	* swizzles vector to (x,y,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYXX();
+
+	/*
+	* GetXYXY
+	*
+	* swizzles vector to (x,y,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYXY();
+
+	/*
+	* GetXYXZ
+	*
+	* swizzles vector to (x,y,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYXZ();
+
+	/*
+	* GetXYYX
+	*
+	* swizzles vector to (x,y,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYYX();
+
+	/*
+	* GetXYYY
+	*
+	* swizzles vector to (x,y,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYYY();
+
+	/*
+	* GetXYYZ
+	*
+	* swizzles vector to (x,y,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYYZ();
+
+	/*
+	* GetXYZX
+	*
+	* swizzles vector to (x,y,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYZX();
+
+	/*
+	* GetXYZY
+	*
+	* swizzles vector to (x,y,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYZY();
+
+	/*
+	* GetXYZZ
+	*
+	* swizzles vector to (x,y,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXYZZ();
+
+	/*
+	* GetXZXX
+	*
+	* swizzles vector to (x,z,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZXX();
+
+	/*
+	* GetXZXY
+	*
+	* swizzles vector to (x,z,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZXY();
+
+	/*
+	* GetXZXZ
+	*
+	* swizzles vector to (x,z,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZXZ();
+
+	/*
+	* GetXZYX
+	*
+	* swizzles vector to (x,z,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZYX();
+
+	/*
+	* GetXZYY
+	*
+	* swizzles vector to (x,z,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZYY();
+
+	/*
+	* GetXZYZ
+	*
+	* swizzles vector to (x,z,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZYZ();
+
+	/*
+	* GetXZZX
+	*
+	* swizzles vector to (x,z,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZZX();
+
+	/*
+	* GetXZZY
+	*
+	* swizzles vector to (x,z,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZZY();
+
+	/*
+	* GetXZZZ
+	*
+	* swizzles vector to (x,z,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetXZZZ();
+
+	/*
+	* GetYXXX
+	*
+	* swizzles vector to (y,x,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXXX();
+
+	/*
+	* GetYXXY
+	*
+	* swizzles vector to (y,x,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXXY();
+
+	/*
+	* GetYXXZ
+	*
+	* swizzles vector to (y,x,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXXZ();
+
+	/*
+	* GetYXYX
+	*
+	* swizzles vector to (y,x,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXYX();
+
+	/*
+	* GetYXYY
+	*
+	* swizzles vector to (y,x,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXYY();
+
+	/*
+	* GetYXYZ
+	*
+	* swizzles vector to (y,x,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXYZ();
+
+	/*
+	* GetYXZX
+	*
+	* swizzles vector to (y,x,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXZX();
+
+	/*
+	* GetYXZY
+	*
+	* swizzles vector to (y,x,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXZY();
+
+	/*
+	* GetYXZZ
+	*
+	* swizzles vector to (y,x,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYXZZ();
+
+	/*
+	* GetYYXX
+	*
+	* swizzles vector to (y,y,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYXX();
+
+	/*
+	* GetYYXY
+	*
+	* swizzles vector to (y,y,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYXY();
+
+	/*
+	* GetYYXZ
+	*
+	* swizzles vector to (y,y,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYXZ();
+
+	/*
+	* GetYYYX
+	*
+	* swizzles vector to (y,y,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYYX();
+
+	/*
+	* GetYYYY
+	*
+	* swizzles vector to (y,y,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYYY();
+
+	/*
+	* GetYYYZ
+	*
+	* swizzles vector to (y,y,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYYZ();
+
+	/*
+	* GetYYZX
+	*
+	* swizzles vector to (y,y,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYZX();
+
+	/*
+	* GetYYZY
+	*
+	* swizzles vector to (y,y,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYZY();
+
+	/*
+	* GetYYZZ
+	*
+	* swizzles vector to (y,y,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYYZZ();
+
+	/*
+	* GetYZXX
+	*
+	* swizzles vector to (y,z,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZXX();
+
+	/*
+	* GetYZXY
+	*
+	* swizzles vector to (y,z,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZXY();
+
+	/*
+	* GetYZXZ
+	*
+	* swizzles vector to (y,z,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZXZ();
+
+	/*
+	* GetYZYX
+	*
+	* swizzles vector to (y,z,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZYX();
+
+	/*
+	* GetYZYY
+	*
+	* swizzles vector to (y,z,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZYY();
+
+	/*
+	* GetYZYZ
+	*
+	* swizzles vector to (y,z,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZYZ();
+
+	/*
+	* GetYZZX
+	*
+	* swizzles vector to (y,z,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZZX();
+
+	/*
+	* GetYZZY
+	*
+	* swizzles vector to (y,z,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZZY();
+
+	/*
+	* GetYZZZ
+	*
+	* swizzles vector to (y,z,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetYZZZ();
+
+	/*
+	* GetZXXX
+	*
+	* swizzles vector to (z,x,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXXX();
+
+	/*
+	* GetZXXY
+	*
+	* swizzles vector to (z,x,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXXY();
+
+	/*
+	* GetZXXZ
+	*
+	* swizzles vector to (z,x,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXXZ();
+
+	/*
+	* GetZXYX
+	*
+	* swizzles vector to (z,x,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXYX();
+
+	/*
+	* GetZXYY
+	*
+	* swizzles vector to (z,x,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXYY();
+
+	/*
+	* GetZXYZ
+	*
+	* swizzles vector to (z,x,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXYZ();
+
+	/*
+	* GetZXZX
+	*
+	* swizzles vector to (z,x,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXZX();
+
+	/*
+	* GetZXZY
+	*
+	* swizzles vector to (z,x,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXZY();
+
+	/*
+	* GetZXZZ
+	*
+	* swizzles vector to (z,x,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZXZZ();
+
+	/*
+	* GetZYXX
+	*
+	* swizzles vector to (z,y,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYXX();
+
+	/*
+	* GetZYXY
+	*
+	* swizzles vector to (z,y,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYXY();
+
+	/*
+	* GetZYXZ
+	*
+	* swizzles vector to (z,y,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYXZ();
+
+	/*
+	* GetZYYX
+	*
+	* swizzles vector to (z,y,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYYX();
+
+	/*
+	* GetZYYY
+	*
+	* swizzles vector to (z,y,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYYY();
+
+	/*
+	* GetZYYZ
+	*
+	* swizzles vector to (z,y,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYYZ();
+
+	/*
+	* GetZYZX
+	*
+	* swizzles vector to (z,y,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYZX();
+
+	/*
+	* GetZYZY
+	*
+	* swizzles vector to (z,y,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYZY();
+
+	/*
+	* GetZYZZ
+	*
+	* swizzles vector to (z,y,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZYZZ();
+
+	/*
+	* GetZZXX
+	*
+	* swizzles vector to (z,z,x,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZXX();
+
+	/*
+	* GetZZXY
+	*
+	* swizzles vector to (z,z,x,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZXY();
+
+	/*
+	* GetZZXZ
+	*
+	* swizzles vector to (z,z,x,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZXZ();
+
+	/*
+	* GetZZYX
+	*
+	* swizzles vector to (z,z,y,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZYX();
+
+	/*
+	* GetZZYY
+	*
+	* swizzles vector to (z,z,y,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZYY();
+
+	/*
+	* GetZZYZ
+	*
+	* swizzles vector to (z,z,y,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZYZ();
+
+	/*
+	* GetZZZX
+	*
+	* swizzles vector to (z,z,z,x)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZZX();
+
+	/*
+	* GetZZZY
+	*
+	* swizzles vector to (z,z,z,y)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZZY();
+
+	/*
+	* GetZZZZ
+	*
+	* swizzles vector to (z,z,z,z)
+	*
+	* @returns Vector4T<T> - the swizzled vector
+	*/
+	MATHSLIBRARY_API Vector4T<T> GetZZZZ();
+
+
+	#pragma endregion
 
 	T x = 0, y = 0, z = 0;
 };

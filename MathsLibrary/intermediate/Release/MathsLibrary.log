@@ -1,7 +1,85 @@
 ﻿  Matrix2.cpp
+c:\users\s171541\desktop\aiemathslibrary\trunk\mathslibrary\header\Vector2.h(216): error C2059: syntax error: '{'
+  c:\users\s171541\desktop\aiemathslibrary\trunk\mathslibrary\header\Vector2.h(466): note: see reference to class template instantiation 'Vector2T<T>' being compiled
+c:\users\s171541\desktop\aiemathslibrary\trunk\mathslibrary\header\Vector2.h(216): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(116): error C2535: 'T Matrix2T<T>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(98): note: see declaration of 'Matrix2T<T>::determinant'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(127): note: see reference to class template instantiation 'Matrix2T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(125): error C2535: 'bool Matrix2T<T>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(107): note: see declaration of 'Matrix2T<T>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(116): error C2535: 'float Matrix2T<float>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(98): note: see declaration of 'Matrix2T<float>::determinant'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(125): error C2535: 'bool Matrix2T<float>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(107): note: see declaration of 'Matrix2T<float>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(116): error C2535: 'double Matrix2T<double>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(98): note: see declaration of 'Matrix2T<double>::determinant'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(125): error C2535: 'bool Matrix2T<double>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(107): note: see declaration of 'Matrix2T<double>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(116): error C2535: 'long double Matrix2T<long double>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(98): note: see declaration of 'Matrix2T<long double>::determinant'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(125): error C2535: 'bool Matrix2T<long double>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(107): note: see declaration of 'Matrix2T<long double>::invert'
   Matrix3.cpp
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'T Matrix3T<T>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<T>::determinant'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(154): note: see reference to class template instantiation 'Matrix3T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<T>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<T>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'float Matrix3T<float>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<float>::determinant'
+  source\Matrix3.cpp(4): note: see reference to class template instantiation 'Matrix3T<float>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<float>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<float>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'double Matrix3T<double>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<double>::determinant'
+  source\Matrix3.cpp(5): note: see reference to class template instantiation 'Matrix3T<double>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<double>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<double>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'long double Matrix3T<long double>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<long double>::determinant'
+  source\Matrix3.cpp(6): note: see reference to class template instantiation 'Matrix3T<long double>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<long double>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<long double>::invert'
   Matrix4.cpp
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(149): error C2535: 'T Matrix4T<T>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(138): note: see declaration of 'Matrix4T<T>::determinant'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(159): note: see reference to class template instantiation 'Matrix4T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'T Matrix3T<T>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<T>::determinant'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(154): note: see reference to class template instantiation 'Matrix3T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<T>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<T>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(149): error C2535: 'float Matrix4T<float>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(138): note: see declaration of 'Matrix4T<float>::determinant'
+  source\Matrix4.cpp(5): note: see reference to class template instantiation 'Matrix4T<float>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(149): error C2535: 'double Matrix4T<double>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(138): note: see declaration of 'Matrix4T<double>::determinant'
+  source\Matrix4.cpp(6): note: see reference to class template instantiation 'Matrix4T<double>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(149): error C2535: 'long double Matrix4T<long double>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(138): note: see declaration of 'Matrix4T<long double>::determinant'
+  source\Matrix4.cpp(7): note: see reference to class template instantiation 'Matrix4T<long double>' being compiled
   Vector2.cpp
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2059: syntax error: '{'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(466): note: see reference to class template instantiation 'Vector2T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(116): error C2535: 'T Matrix2T<T>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(98): note: see declaration of 'Matrix2T<T>::determinant'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(127): note: see reference to class template instantiation 'Matrix2T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(125): error C2535: 'bool Matrix2T<T>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(107): note: see declaration of 'Matrix2T<T>::invert'
   Vector3.cpp
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'T Matrix3T<T>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<T>::determinant'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(154): note: see reference to class template instantiation 'Matrix3T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<T>::invert(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<T>::invert'
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2059: syntax error: '{'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(466): note: see reference to class template instantiation 'Vector2T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
   Vector4.cpp
-  MathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\libs\MathsLibrary.lib
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(149): error C2535: 'T Matrix4T<T>::determinant(void)': member function already defined or declared
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(138): note: see declaration of 'Matrix4T<T>::determinant'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(159): note: see reference to class template instantiation 'Matrix4T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2059: syntax error: '{'
+  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(466): note: see reference to class template instantiation 'Vector2T<T>' being compiled
+C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2334: unexpected token(s) preceding '{'; skipping apparent function body

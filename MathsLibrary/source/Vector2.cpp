@@ -146,24 +146,195 @@ Vector2T<T> Vector2T<T>::normal(NormalDirection direction)
 	}
 }
 
-//2D swizzle
+#pragma region swizzling
+//swizzling
 TEMPLATE
-Vector2T<T> Vector2T<T>::swizzle(int o1, int o2)
+Vector2T<T> Vector2T<T>::GetXX()
 {
-	return Vector2T<T>((*this)[o1], (*this)[o2]);
+	return Vector2T<T>{x, x};
 }
 
-//3D swizzle
+//swizzling
 TEMPLATE
-Vector3T<T> Vector2T<T>::swizzle(int o1, int o2, int o3)
+Vector2T<T> Vector2T<T>::GetYX()
 {
-	return Vector3T<T>((*this)[o1], (*this)[o2], (*this)[o3]);
+	return Vector2T<T>{y, x};
 }
 
-//4D swizzle
+//swizzling
 TEMPLATE
-Vector4T<T> Vector2T<T>::swizzle(int o1, int o2, int o3, int o4)
+Vector2T<T> Vector2T<T>::GetYY()
 {
-	return Vector4T<T>((*this)[o1], (*this)[o2], (*this)[o3], (*this)[o4]);
+	return Vector2T<T>{y, y};
 }
 
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetXXX()
+{
+	return Vector3T<T>{x, x, x};
+}
+
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetXXY()
+{
+	return Vector3T<T>{x, x, y};
+}
+
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetXYX()
+{
+	return Vector3T<T>{x, y, x};
+}
+
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetXYY()
+{
+	return Vector3T<T>{x, y, y};
+}
+
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetYXX()
+{
+	return Vector3T<T>{y, x, x};
+}
+
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetYXY()
+{
+	return Vector3T<T>{y, x, y};
+}
+
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetYYX()
+{
+	return Vector3T<T>{y, y, x};
+}
+
+//swizzling
+TEMPLATE
+Vector3T<T> Vector2T<T>::GetYYY()
+{
+	return Vector3T<T>{y, y, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXXXX()
+{
+	return Vector4T<T>{x, x, x, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXXXY()
+{
+	return Vector4T<T>{x, x, x, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXXYX()
+{
+	return Vector4T<T>{x, x, y, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXXYY()
+{
+	return Vector4T<T>{x, x, y, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXYXX()
+{
+	return Vector4T<T>{x, y, x, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXYXY()
+{
+	return Vector4T<T>{x, y, x, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXYYX()
+{
+	return Vector4T<T>{x, y, y, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetXYYY()
+{
+	return Vector4T<T>{x, y, y, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYXXX()
+{
+	return Vector4T<T>{y, x, x, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYXXY()
+{
+	return Vector4T<T>{y, x, x, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYXYX()
+{
+	return Vector4T<T>{y, x, y, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYXYY()
+{
+	return Vector4T<T>{y, x, y, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYYXX()
+{
+	return Vector4T<T>{y, y, x, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYYXY()
+{
+	return Vector4T<T>{y, y, x, y};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYYYX()
+{
+	return Vector4T<T>{y, y, y, x};
+}
+
+//swizzling
+TEMPLATE
+Vector4T<T> Vector2T<T>::GetYYYY()
+{
+	return Vector4T<T>{y, y, y, y};
+}
+
+
+#pragma endregion
