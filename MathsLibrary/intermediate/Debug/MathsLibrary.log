@@ -1,1 +1,8 @@
-﻿  MathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\libs\MathsLibrary_DEBUG.lib
+﻿  Vector4.cpp
+  Vector3.cpp
+  Vector2.cpp
+  Matrix4.cpp
+  Matrix3.cpp
+  Matrix2.cpp
+  Generating Code...
+  MathsLibrary.vcxproj -> C:\Users\Brad\Desktop\AIEMathsLibrary\trunk\\libs\MathsLibrary_DEBUG.lib

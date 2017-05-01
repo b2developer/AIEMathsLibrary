@@ -1,27 +1,7 @@
-﻿  main.cpp
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2059: syntax error: '{'
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(466): note: see reference to class template instantiation 'Vector2T<T>' being compiled
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Vector2.h(216): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(116): error C2535: 'T Matrix2T<T>::determinant(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(98): note: see declaration of 'Matrix2T<T>::determinant'
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(127): note: see reference to class template instantiation 'Matrix2T<T>' being compiled
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(125): error C2535: 'bool Matrix2T<T>::invert(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(107): note: see declaration of 'Matrix2T<T>::invert'
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'T Matrix3T<T>::determinant(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<T>::determinant'
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(154): note: see reference to class template instantiation 'Matrix3T<T>' being compiled
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<T>::invert(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<T>::invert'
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(149): error C2535: 'T Matrix4T<T>::determinant(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(138): note: see declaration of 'Matrix4T<T>::determinant'
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix4.h(159): note: see reference to class template instantiation 'Matrix4T<T>' being compiled
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(116): error C2535: 'float Matrix2T<float>::determinant(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(98): note: see declaration of 'Matrix2T<float>::determinant'
-  Source\main.cpp(27): note: see reference to class template instantiation 'Matrix2T<float>' being compiled
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(125): error C2535: 'bool Matrix2T<float>::invert(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix2.h(107): note: see declaration of 'Matrix2T<float>::invert'
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(144): error C2535: 'float Matrix3T<float>::determinant(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(127): note: see declaration of 'Matrix3T<float>::determinant'
-  Source\main.cpp(41): note: see reference to class template instantiation 'Matrix3T<float>' being compiled
-C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(153): error C2535: 'bool Matrix3T<float>::invert(void)': member function already defined or declared
-  C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\MathsLibrary\header\Matrix3.h(136): note: see declaration of 'Matrix3T<float>::invert'
+﻿  Generating code
+  16 of 28 functions (57.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  MathsDemonstration.vcxproj -> C:\Users\Brad\Desktop\AIEMathsLibrary\trunk\\bin\MathsDemonstration.exe
+  MathsDemonstration.vcxproj -> C:\Users\Brad\Desktop\AIEMathsLibrary\trunk\\bin\MathsDemonstration.pdb (Full PDB)

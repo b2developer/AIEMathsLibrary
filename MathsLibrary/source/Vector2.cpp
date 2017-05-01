@@ -28,6 +28,20 @@ Vector2T<T>::operator T*()
 	return &x;
 }
 
+//cast to vector3
+TEMPLATE
+Vector2T<T>::operator Vector3T<T>()
+{
+	return Vector3T<T>{x, y, 0.0f};
+}
+
+//cast to vector4
+TEMPLATE
+Vector2T<T>::operator Vector4T<T>()
+{
+	return Vector4T<T>{x, y, 0.0f, 0.0f};
+}
+
 //addition operator
 TEMPLATE
 Vector2T<T> Vector2T<T>::operator+(const Vector2T<T> other)

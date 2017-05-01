@@ -105,6 +105,8 @@ public:
 	* @returns bool - indicating if the inversion worked or not
 	*/
 	MATHSLIBRARY_API bool invert();
+
+
 };
 
 using Matrix2 = Matrix2T<float>;

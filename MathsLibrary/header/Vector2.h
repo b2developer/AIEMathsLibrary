@@ -72,6 +72,22 @@ public:
 	MATHSLIBRARY_API operator T*();
 
 	/*
+	* operator Vector3T<T>
+	* cast to Vector3T<T> overload
+	*
+	* @returns Vector3T<T> - the Vector2 as a Vector3
+	*/
+	MATHSLIBRARY_API operator Vector3T<T>();
+
+	/*
+	* operator Vector4T<T>
+	* cast to Vector4T<T> overload
+	*
+	* @returns Vector4T<T> - the Vector2 as a Vector4
+	*/
+	MATHSLIBRARY_API operator Vector4T<T>();
+
+	/*
 	* operator +
 	* adds 2 vectors together
 	*

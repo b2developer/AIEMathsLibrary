@@ -43,8 +43,8 @@ int main()
 	vect.x = 0.5f;
 
 	vect = vect * transformer;
-	
-	Vector2 swiz = (vect).swizzle(2, 0);
+
+	Vector2 t = (Vector2)vect;
 
 	return 0;
 }
