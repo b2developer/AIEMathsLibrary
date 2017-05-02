@@ -1,0 +1,10 @@
+﻿  Vector4.cpp
+  Vector3.cpp
+  Vector2.cpp
+  Matrix4.cpp
+  Matrix3.cpp
+  Matrix2.cpp
+  Generating Code...
+     Creating library C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.lib and object C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.exp
+  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.dll
+  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.pdb (Partial PDB)
