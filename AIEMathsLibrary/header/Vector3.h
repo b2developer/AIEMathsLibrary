@@ -1279,7 +1279,7 @@ Vector3T<T> operator/(const float scalar, const Vector3T<T> vector);
 TEMPLATE
 Vector3T<T> operator/(const float scalar, const Vector3T<T> vector)
 {
-	return Vector3T<T>{ vector.x / scalar, vector.y / scalar, vector.z / scalar};
+	return Vector3T<T>{ scalar / vector.x, scalar / vector.y, scalar / vector.z};
 }
 
 

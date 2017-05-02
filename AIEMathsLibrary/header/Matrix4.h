@@ -127,6 +127,18 @@ public:
 	MATHSLIBRARY_API void setRotateZ(T radians);
 
 	/*
+	* transpose
+	* swaps the row and column positions of each element around
+	*
+	* a b  becomes --->  a c
+	* c d				 b d
+	*
+	* @param T - the amount of radians the matrix will represent
+	* @returns void
+	*/
+	MATHSLIBRARY_API void transpose();
+
+	/*
 	* determinant
 	* calcualates the determinant of the matrix
 	*
@@ -136,6 +148,150 @@ public:
 	* @returns T - the determinant of the matrix
 	*/
 	MATHSLIBRARY_API T determinant();
+
+	/*
+	* invert
+	* inverts the matrix
+	* sometimes matrices aren't invertible
+	* http://www.cg.info.hiroshima-cu.ac.jp/~miyazaki/knowledge/teche23.html
+	*
+	* @returns bool - indicating if the inversion worked or not
+	*/
+	MATHSLIBRARY_API bool invert();
+
+	/*
+	* setScale
+	*
+	* generates a scaling matrix
+	*
+	* @param Vector3T<T> scale - the new scale of the matrix
+	* @returns void
+	*/
+	MATHSLIBRARY_API void setScale(Vector3T<T> scale);
+
+	/*
+	* setTranslate
+	*
+	* generates a translation matrix
+	*
+	* @param Vector3T<T> translate - the new translation of the matrix
+	* @returns void
+	*/
+	MATHSLIBRARY_API void setTranslate(Vector3T<T> translate);
+
+	/*
+	* translate
+	*
+	* adds a translation to a matrix
+	*
+	* @param Vector3T<T> translate - the translation to add
+	* @returns void
+	*/
+	MATHSLIBRARY_API void translate(Vector3T<T> translate);
+
+	/*
+	* scale
+	*
+	* scales a matrix
+	*
+	* @param Vector3T<T> scale - the scale to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void scale(Vector3T<T> scale);
+
+	/*
+	* getScale
+	*
+	* gets the scale of a 3D transformation matrix (a 4D matrix)
+	*
+	* @returns Vector3T<T> - the scale along each axis
+	*/
+	MATHSLIBRARY_API Vector3T<T> getScale();
+
+	/*
+	* rotateX
+	*
+	* applies a rotation to a 3D transformation matrix
+	* along the x axis (yz affected)
+	*
+	* @param T radians - the amount of rotation to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateX(T radians);
+
+	/*
+	* rotateY
+	*
+	* applies a rotation to a 3D transformation matrix
+	* along the y axis (xz affected)
+	*
+	* @param T radians - the amount of rotation to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateY(T radians);
+
+	/*
+	* rotateZ
+	*
+	* applies a rotation to a 3D transformation matrix
+	* along the z axis (xy affected)
+	*
+	* @param T radians - the amount of rotation to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateZ(T radians);
+
+	/*
+	* rotateEuler
+	*
+	* applies 3 rotations in a specific order
+	* Z then Y then X
+	*
+	* @param Vector3T<T> angles - the angles to rotate by
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateEuler(Vector3T<T> angles);
+
+	/*
+	* getRotationX
+	*
+	* gets the rotation around the X axis of a 3D transformation matrix (a 4D matrix)
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns T - the rotation in radians
+	*/
+	MATHSLIBRARY_API T getRotationX();
+
+	/*
+	* getRotationY
+	*
+	* gets the rotation around the Y axis of a 3D transformation matrix (a 4D matrix)
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns T - the rotation in radians
+	*/
+	MATHSLIBRARY_API T getRotationY();
+
+	/*
+	* getRotationZ
+	*
+	* gets the rotation around the Z axis of a 3D transformation matrix (a 4D matrix)
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns T - the rotation in radians
+	*/
+	MATHSLIBRARY_API T getRotationZ();
+
+	/*
+	* getEuler
+	*
+	* gets the rotation along all axes as euler angles
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns Vector3T<T> - the rotation in radians
+	*/
+	MATHSLIBRARY_API Vector3T<T> getEuler();
+
 };
 
 using Matrix4 = Matrix4T<float>;

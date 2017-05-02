@@ -90,6 +90,18 @@ public:
 	MATHSLIBRARY_API void setRotate(T radians);
 
 	/*
+	* transpose
+	* swaps the row and column positions of each element around
+	*
+	* a b  becomes --->  a c
+	* c d				 b d
+	*
+	* @param T - the amount of radians the matrix will represent
+	* @returns void
+	*/
+	MATHSLIBRARY_API void transpose();
+
+	/*
 	* determinant
 	* calcualates the determinant of the matrix
 	* 

@@ -119,6 +119,18 @@ public:
 	MATHSLIBRARY_API void setRotateZ(T radians);
 
 	/*
+	* transpose
+	* swaps the row and column positions of each element around
+	*
+	* a b  becomes --->  a c
+	* c d				 b d
+	*
+	* @param T - the amount of radians the matrix will represent
+	* @returns void
+	*/
+	MATHSLIBRARY_API void transpose();
+
+	/*
 	* determinant
 	* calcualates the determinant of the matrix
 	*
@@ -130,10 +142,113 @@ public:
 	* invert
 	* inverts the matrix
 	* sometimes matrices aren't invertible
+	* http://www.cg.info.hiroshima-cu.ac.jp/~miyazaki/knowledge/teche23.html
 	*
 	* @returns bool - indicating if the inversion worked or not
 	*/
 	MATHSLIBRARY_API bool invert();
+
+	/*
+	* setScale
+	*
+	* generates a scaling matrix
+	*
+	* @param Vector2T<T> scale - the new scale of the matrix
+	* @returns void
+	*/
+	MATHSLIBRARY_API void setScale(Vector2T<T> scale);
+
+	/*
+	* setTranslate
+	*
+	* generates a translation matrix
+	*
+	* @param Vector2T<T> translate - the new translation of the matrix
+	* @returns void
+	*/
+	MATHSLIBRARY_API void setTranslate(Vector2T<T> translate);
+
+	/*
+	* translate
+	*
+	* adds a translation to a matrix
+	*
+	* @param Vector2T<T> translate - the translation to add
+	* @returns void
+	*/
+	MATHSLIBRARY_API void translate(Vector2T<T> translate);
+
+	/*
+	* scale
+	*
+	* scales a matrix
+	*
+	* @param Vector2T<T> scale - the scale to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void scale(Vector2T<T> scale);
+
+	/*
+	* getScale
+	*
+	* gets the scale of a 2D transformation matrix (a 3D matrix)
+	*
+	* @returns Vector2T<T> - the scale along each axis
+	*/
+	MATHSLIBRARY_API Vector2T<T> getScale();
+
+	/*
+	* getRotation
+	*
+	* gets the rotation of a 2D transformation matrix (a 3D matrix)
+	*
+	* @returns T - the rotation in radians
+	*/
+	MATHSLIBRARY_API T getRotation();
+
+	/*
+	* rotateX
+	*
+	* applies a rotation to a 3D rotation matrix
+	* along the x axis (yz affected)
+	*
+	* @param T radians - the amount of rotation to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateX(T radians);
+
+	/*
+	* rotateY
+	*
+	* applies a rotation to a 3D rotation matrix
+	* along the y axis (xz affected)
+	*
+	* @param T radians - the amount of rotation to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateY(T radians);
+
+	/*
+	* rotateZ
+	*
+	* applies a rotation to a 3D rotation matrix
+	* along the z axis (xy affected)
+	*
+	* @param T radians - the amount of rotation to apply
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateZ(T radians);
+
+	/*
+	* rotateEuler
+	*
+	* applies 3 rotations in a specific order
+	* Z then Y then X
+	*
+	* @param Vector3T<T> angles - the angles to rotate by
+	* @returns void
+	*/
+	MATHSLIBRARY_API void rotateEuler(Vector3T<T> angles);
 };
 
 using Matrix3 = Matrix3T<float>;

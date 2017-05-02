@@ -484,7 +484,7 @@ Vector2T<T> operator/(const float scalar, const Vector2T<T> vector);
 TEMPLATE
 Vector2T<T> operator/(const float scalar, const Vector2T<T> vector)
 {
-	return Vector2T<T>{ vector.x / scalar, vector.y / scalar };
+	return Vector2T<T>{ scalar / vector.x, scalar / vector.y};
 }
 
 

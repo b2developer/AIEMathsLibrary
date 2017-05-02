@@ -1,4 +1,5 @@
 #include "Matrix3.h"
+#include "Vector2.h"
 
 //all of the decimal types
 template class Matrix3T<float>;
@@ -133,6 +134,21 @@ void Matrix3T<T>::setRotateZ(T radians)
 	mat[1][1] = (T)cos(radians);
 }
 
+//transpose matrix
+TEMPLATE
+void Matrix3T<T>::transpose()
+{
+	Matrix3T<T> temp = *this;
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			mat[j][i] = temp.mat[i][j];
+		}
+	}
+}
+
 //determinant from matrix
 TEMPLATE
 T Matrix3T<T>::determinant()
@@ -214,3 +230,116 @@ bool Matrix3T<T>::invert()
 
 	return true;
 }
+
+//2D scale matrix
+TEMPLATE
+void Matrix3T<T>::setScale(Vector2T<T> scale)
+{
+	identity(); //all other elements are reset
+
+	mat[0][0] = scale.x;
+	mat[1][1] = scale.y;
+}
+
+//2D translation matrix
+TEMPLATE
+void Matrix3T<T>::setTranslate(Vector2T<T> translate)
+{
+	identity(); //all other elements are reset
+
+	mat[2][0] = translate.x;
+	mat[2][1] = translate.y;
+}
+
+//applies a relative translation to a matrix
+TEMPLATE
+void Matrix3T<T>::translate(Vector2T<T> translate)
+{
+	mat[2][0] += translate.x;
+	mat[2][1] += translate.y;
+}
+
+//applies a relative scale to a matrix
+TEMPLATE
+void Matrix3T<T>::scale(Vector2T<T> scale)
+{
+	mat[0][0] *= scale.x;
+	mat[0][1] *= scale.x;
+
+	mat[1][0] *= scale.y;
+	mat[1][1] *= scale.y;
+}
+
+//applies a relative rotation (YZ affected) to a matrix
+TEMPLATE
+void Matrix3T<T>::rotateX(T radians)
+{
+	Matrix3T<T> other;
+	other.setRotateX(radians);
+
+	*this = other * *this;
+}
+
+//applies a relative rotation (XZ affected) to a matrix
+TEMPLATE
+void Matrix3T<T>::rotateY(T radians)
+{
+	Matrix3T<T> other;
+	other.setRotateY(radians);
+
+	*this = other * *this;
+}
+
+
+//applies a relative rotation (XY affected) to a matrix
+TEMPLATE
+void Matrix3T<T>::rotateZ(T radians)
+{
+	Matrix3T<T> other;
+	other.setRotateZ(radians);
+
+	*this = other * *this;
+}
+
+//rotates by Z, then Y, then X
+TEMPLATE 
+void Matrix3T<T>::rotateEuler(Vector3T<T> angles)
+{
+	Matrix3T<T> X;
+	Matrix3T<T> Y;
+	Matrix3T<T> Z;
+
+	//individual rotations
+	X.setRotateX(angles.x);
+	Y.setRotateY(angles.y);
+	Z.setRotateZ(angles.z);
+
+	*this = X * Y * Z * *this;
+}
+
+//get scale from 3D matrix
+TEMPLATE
+Vector2T<T> Matrix3T<T>::getScale()
+{
+	//get the sign of the scale x
+	T signX = mat[0][0] > 0 ? (T)1 : (T)-1;
+	signX = mat[0][0] == 0 ? (T)0 : signX;
+
+	//get the sign of the scale y
+	T signY = mat[1][1] > 0 ? (T)1 : (T)-1;
+	signY = mat[1][1] == 0 ? (T)0 : signY;
+
+	//scale decomposition
+	T sX = signX * (T)sqrt(mat[0][0] * mat[0][0] + mat[0][1] * mat[0][1]);
+	T sY = signY * (T)sqrt(mat[1][0] * mat[1][0] + mat[1][1] * mat[1][1]);
+
+	return Vector2T<T>{sX, sY};
+}
+
+//gets the rotation along the x axis from 3D matrix
+TEMPLATE
+T Matrix3T<T>::getRotation()
+{
+	return (T)atan2(-mat[0][1], mat[0][0]);
+}
+

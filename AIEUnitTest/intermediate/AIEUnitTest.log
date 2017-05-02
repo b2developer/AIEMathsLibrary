@@ -1,5 +1,7 @@
-﻿  unittest.cpp
-  main.cpp
-  Generating Code...
-  AIEUnitTest.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEUnitTest_DEBUG.exe
-  AIEUnitTest.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEUnitTest_DEBUG.pdb (Partial PDB)
+﻿  Generating code
+  2 of 53 functions ( 3.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  AIEUnitTest.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEUnitTest.exe
+  AIEUnitTest.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEUnitTest.pdb (Full PDB)

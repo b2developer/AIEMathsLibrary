@@ -144,6 +144,22 @@ void Matrix4T<T>::setRotateZ(T radians)
 	mat[1][1] = (T)cos(radians);
 }
 
+//transpose matrix
+TEMPLATE
+void Matrix4T<T>::transpose()
+{
+	Matrix4T<T> temp = *this;
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			mat[j][i] = temp.mat[i][j];
+		}
+	}
+}
+
+
 //determinant from matrix
 TEMPLATE
 T Matrix4T<T>::determinant()
@@ -176,7 +192,7 @@ T Matrix4T<T>::determinant()
 	T o = mat[3][2];
 	T p = mat[3][3];
 
-	Matrix3T<T> m1 = Matrix3T<T>{ f,g,h,j,k,l,m,n,o };
+	Matrix3T<T> m1 = Matrix3T<T>{ f,g,h,j,k,l,n,o,p };
 	Matrix3T<T> m2 = Matrix3T<T>{ e,g,h,i,k,l,m,o,p };
 	Matrix3T<T> m3 = Matrix3T<T>{ e,f,h,i,j,l,m,n,p };
 	Matrix3T<T> m4 = Matrix3T<T>{ e,f,g,i,j,k,m,n,o };
@@ -184,4 +200,287 @@ T Matrix4T<T>::determinant()
 	return a * m1.determinant() - b * m2.determinant() + c * m3.determinant() - d * m4.determinant();
 }
 
+//invert the matrix
+TEMPLATE
+bool Matrix4T<T>::invert()
+{
+	T determinant = this->determinant();
 
+	//if the determinant is 0, the inversion wont work
+	if (determinant == 0)
+	{
+		return false;
+	}
+
+	T invDet = 1 / determinant;
+
+	Matrix3T<T> detMats[16];
+
+	//make sub-matrices
+	for (int i = 0; i < 16; i++)
+	{
+		int count = 0;
+
+		for (int m = 0; m < 4; m++)
+		{
+			for (int n = 0; n < 4; n++)
+			{
+				int cm = i / 4;
+				int cn = i % 4;
+
+				if (cm != m && cn != n)
+				{
+					detMats[i].mat[count / 3][count % 3] = mat[m][n];
+					count++;
+				}
+			}
+		}
+	}
+
+	//set the matrix to be determinants of the sub-matrix
+	for (int i = 0; i < 16; i++)
+	{
+		int cm = i / 4;
+		int cn = i % 4;
+
+		mat[cm][cn] = detMats[i].determinant();
+	}
+
+	//transpose the matrix
+	transpose();
+
+	//negate every odd element 1,3,5,7..., 
+	for (int i = 0; i < 16; i++)
+	{
+		int cm = i / 4;
+		int cn = i % 4;
+
+		//switching between odd and even calculations
+		if (i % 2 == 1 - cm % 2)
+		{
+			mat[cm][cn] *= -1;
+		}
+	}
+
+
+	//divide by the determinant
+	for (int i = 0; i < 16; i++)
+	{
+		int cm = i / 4;
+		int cn = i % 4;
+
+		//divide by the determinant of the 4x4
+		mat[cm][cn] *= invDet;
+	}
+
+	return true;
+}
+
+//3D scale matrix
+TEMPLATE
+void Matrix4T<T>::setScale(Vector3T<T> scale)
+{
+	identity(); //all other elements are reset
+
+	mat[0][0] = scale.x;
+	mat[1][1] = scale.y;
+	mat[2][2] = scale.z;
+}
+
+//3D translation matrix
+TEMPLATE
+void Matrix4T<T>::setTranslate(Vector3T<T> translate)
+{
+	identity(); //all other elements are reset
+
+	mat[3][0] = translate.x;
+	mat[3][1] = translate.y;
+	mat[3][2] = translate.z;
+}
+
+//applies a relative translation to a matrix
+TEMPLATE
+void Matrix4T<T>::translate(Vector3T<T> translate)
+{
+	mat[3][0] += translate.x;
+	mat[3][1] += translate.y;
+	mat[3][2] += translate.z;
+}
+
+//applies a relative scale to a matrix
+TEMPLATE
+void Matrix4T<T>::scale(Vector3T<T> scale)
+{
+	mat[0][0] *= scale.x;
+	mat[0][1] *= scale.x;
+	mat[0][2] *= scale.x;
+
+	mat[1][0] *= scale.y;
+	mat[1][1] *= scale.y;
+	mat[1][2] *= scale.y;
+
+	mat[2][0] *= scale.z;
+	mat[2][1] *= scale.z;
+	mat[2][2] *= scale.z;
+}
+
+//get scale from 4D matrix
+TEMPLATE
+Vector3T<T> Matrix4T<T>::getScale()
+{
+	//get the sign of the scale x
+	T signX = mat[0][0] > 0 ? (T)1 : (T)-1;
+	signX = mat[0][0] == 0 ? (T)0 : signX;
+
+	//get the sign of the scale y
+	T signY = mat[1][1] > 0 ? (T)1 : (T)-1;
+	signY = mat[1][1] == 0 ? (T)0 : signY;
+
+	//get the sign of the scale y
+	T signZ = mat[2][2] > 0 ? (T)1 : (T)-1;
+	signZ = mat[2][2] == 0 ? (T)0 : signZ;
+
+	//scale decomposition
+	T sX = signX * (T)sqrt(mat[0][0] * mat[0][0] + mat[0][1] * mat[0][1] + mat[0][2] * mat[0][2]);
+	T sY = signY * (T)sqrt(mat[1][0] * mat[1][0] + mat[1][1] * mat[1][1] + mat[1][2] * mat[1][2]);
+	T sZ = signZ * (T)sqrt(mat[2][0] * mat[2][0] + mat[2][1] * mat[2][1] + mat[2][2] * mat[2][2]);
+
+	return Vector3T<T>{sX, sY, sZ};
+}
+
+//applies a relative rotation (YZ affected) to a matrix
+TEMPLATE
+void Matrix4T<T>::rotateX(T radians)
+{
+	Matrix4T<T> other;
+	other.setRotateX(radians);
+
+	*this = other * *this;
+}
+
+//applies a relative rotation (XZ affected) to a matrix
+TEMPLATE
+void Matrix4T<T>::rotateY(T radians)
+{
+	Matrix4T<T> other;
+	other.setRotateY(radians);
+
+	*this = other * *this;
+}
+
+
+//applies a relative rotation (XY affected) to a matrix
+TEMPLATE
+void Matrix4T<T>::rotateZ(T radians)
+{
+	Matrix4T<T> other;
+	other.setRotateZ(radians);
+
+	*this = other * *this;
+}
+
+//rotates by Z, then Y, then X
+TEMPLATE
+void Matrix4T<T>::rotateEuler(Vector3T<T> angles)
+{
+	Matrix4T<T> X;
+	Matrix4T<T> Y;
+	Matrix4T<T> Z;
+
+	//individual rotations
+	X.setRotateX(angles.x);
+	Y.setRotateY(angles.y);
+	Z.setRotateZ(angles.z);
+
+	*this = X * Y * Z * *this;
+}
+
+
+//get the rotation around the X axis
+TEMPLATE
+T Matrix4T<T>::getRotationX()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix4T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	T roll = 0;
+
+	if (copy.mat[0][0] != 1 && copy.mat[0][0] != -1)
+	{
+		T roll = (T)atan2(-copy.mat[1][2], copy.mat[1][1]);
+	}
+
+	return roll;
+}
+
+//get the rotation around the Y axis
+TEMPLATE
+T Matrix4T<T>::getRotationY()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix4T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	T pitch = 0;
+
+	if (copy.mat[0][0] == 1 || copy.mat[0][0] == -1)
+	{
+		T pitch = (T)atan2(copy.mat[0][2], copy.mat[2][3]);
+	}
+	else
+	{
+		T pitch = (T)atan2(-copy.mat[2][0], copy.mat[0][0]);
+	}
+
+	return pitch;
+}
+
+//get the rotation around the Z axis
+TEMPLATE
+T Matrix4T<T>::getRotationZ()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix4T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	T yaw = 0;
+
+	if (copy.mat[0][0] != 1 && copy.mat[0][0] != -1)
+	{
+		T yaw = (T)asin(copy.mat[1][0]);
+	}
+
+	return yaw;
+}
+
+//gets all rotation as euler angles
+TEMPLATE
+Vector3T<T> Matrix4T<T>::getEuler()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix4T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	if (copy.mat[0][0] == 1 || copy.mat[0][0] == -1)
+	{
+		T pitch = (T)atan2(copy.mat[0][2], copy.mat[2][3]);
+		return Vector3T<T>{0, pitch, 0};
+	}
+	else
+	{
+		T yaw = (T)asin(copy.mat[0][1]);
+		T pitch = (T)atan2(-copy.mat[0][2], copy.mat[0][0]);
+		T roll = (T)atan2(-copy.mat[2][1], copy.mat[1][1]);
+
+		return Vector3T<T>{roll, pitch, yaw};
+	}
+}

@@ -99,6 +99,21 @@ void Matrix2T<T>::setRotate(T radians)
 	mat[1][1] = (T)cos(radians);
 }
 
+//transpose the matrix
+TEMPLATE
+void Matrix2T<T>::transpose()
+{
+	Matrix2T<T> temp = *this;
+
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			mat[j][i] = temp.mat[i][j];
+		}
+	}
+}
+
 //determinant from matrix
 TEMPLATE
 T Matrix2T<T>::determinant()

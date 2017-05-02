@@ -3254,7 +3254,7 @@ Vector4T<T> operator/(const float scalar, const Vector4T<T> vector);
 TEMPLATE
 Vector4T<T> operator/(const float scalar, const Vector4T<T> vector)
 {
-	return Vector4T<T>{ vector.x / scalar, vector.y / scalar, vector.z / scalar, vector.w / scalar};
+	return Vector4T<T>{ scalar / vector.x, scalar / vector.y, scalar / vector.z, scalar /vector.w};
 }
 
 

@@ -1,10 +1,9 @@
-﻿  Vector4.cpp
-  Vector3.cpp
-  Vector2.cpp
-  Matrix4.cpp
-  Matrix3.cpp
-  Matrix2.cpp
-  Generating Code...
-     Creating library C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.lib and object C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.exp
-  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.dll
-  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\\bin\AIEMathsLibrary_DEBUG.pdb (Partial PDB)
+﻿  Matrix3.cpp
+     Creating library C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary.lib and object C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary.exp
+  Generating code
+  102 of 1788 functions ( 5.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    39 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary.dll
+  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary.pdb (Full PDB)
