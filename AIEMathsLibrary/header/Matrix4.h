@@ -292,6 +292,20 @@ public:
 	*/
 	MATHSLIBRARY_API Vector3T<T> getEuler();
 
+	/*
+	* lookAt
+	*
+	* generates a rotation matrix which will orient
+	* an observer positioned at eye to face towards 
+	* target. the up vector is used to make sure that
+	* the orientation is sensible (not upside-down)
+	*
+	* @param Vector3T<T> eye - the position of the observer
+	* @param Vector3T<T> target - the position to orient towards
+	* @param Vector3T<T> up - the global up vector
+	*/
+	MATHSLIBRARY_API void lookAt(Vector3T<T> eye, Vector3T<T> target, Vector3T<T> up);
+
 };
 
 using Matrix4 = Matrix4T<float>;

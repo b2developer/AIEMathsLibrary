@@ -16,14 +16,17 @@ int main() {
 
 	Matrix4 d;
 
-	d.setScale(Vector3{ 5,4,2 });
+	Vector3 p = Vector3{ 10, -10, 20 };
+	Vector3 t = Vector3{ -110, 15, 80 };
+	Vector3 u = Vector3{ 0,1,0 };
+	Vector4 f = Vector4{ 0,0,1,0};
 
-	Vector3 eulerD = d.getEuler();
+	Matrix4 look;
+	look.lookAt(p, t, u);
 
-	d.rotateEuler(Vector3{ -0.08f,-0.58f,0.991f });
+	f = look * f;
 
-	Vector3 scaleD = d.getScale();
-    eulerD = d.getEuler();
+	Vector3 f4 = f.GetXYZ();
 
 	float det = a.determinant();
 

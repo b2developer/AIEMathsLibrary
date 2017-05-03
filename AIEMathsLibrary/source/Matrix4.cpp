@@ -484,3 +484,40 @@ Vector3T<T> Matrix4T<T>::getEuler()
 		return Vector3T<T>{roll, pitch, yaw};
 	}
 }
+
+//generate an orientation that makes an observer at one point face another point
+TEMPLATE
+void Matrix4T<T>::lookAt(Vector3T<T> eye, Vector3T<T> target, Vector3T<T> up)
+{
+	Vector3T<T> zAxis = (target - eye).normalised();
+	Vector3T<T> xAxis = (up * -1).cross(zAxis).normalised();
+	Vector3T<T> yAxis = zAxis.cross(xAxis);
+
+	Matrix4T<T> look;
+
+	T xDot = -xAxis.dot(eye);
+	T yDot = -yAxis.dot(eye);
+	T zDot = -zAxis.dot(eye);
+
+	look.identity();
+
+	look[0][0] = xAxis.x;
+	look[1][0] = xAxis.y;
+	look[2][0] = xAxis.z;
+
+	look[0][1] = yAxis.x;
+	look[1][1] = yAxis.y;
+	look[2][1] = yAxis.z;
+
+	look[0][2] = zAxis.x;
+	look[1][2] = zAxis.y;
+	look[2][2] = zAxis.z;
+
+	look[3][0] = xDot;
+	look[3][1] = yDot;
+	look[3][2] = zDot;
+
+	look.transpose();
+
+	*this = look;
+}
