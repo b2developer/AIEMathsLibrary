@@ -1,5 +1,10 @@
 AIEMathsLibrary - by Bradley Booth
 
+Important Notes:
+- the decomposition functions for the matrix assume certain conventions about the matrix
+  the rotation on 3 axes is used on a matrix 3 that is assumed to only be representing rotations
+  mixing rotation matrix functions with transformation matrix functions results in incorrect decompositions
+
 Project Features:
 
 - passes the unit test
@@ -21,7 +26,7 @@ Matrix Features:
 
 - implements all minimum requirements
 - implements all extended requirements such as LookAt(eye, target ,up), relative transformations
-- includes matrix decomposition functions
+- includes matrix decomposition functions for Matrix3 and Matrix4
 - implements advanced helper functions such as the determinant, inversion, identity and transpose
 - all matrices implemented as templates with all real values (float, double, long double)
 
