@@ -160,6 +160,14 @@ Vector2T<T> Vector2T<T>::normal(NormalDirection direction)
 	}
 }
 
+//get the rotation represented by the vector
+TEMPLATE
+T Vector2T<T>::getRotation()
+{
+	//atan2 achieves this
+	return atan2(y, x);
+}
+
 #pragma region swizzling
 //swizzling
 TEMPLATE

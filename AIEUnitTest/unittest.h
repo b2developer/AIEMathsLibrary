@@ -9,6 +9,8 @@
 #include "Matrix3.h"
 #include "Matrix4.h"
 
+static const float DEFAULT_TOLERANCE = 0.00001f;
+
 // TYPEDEFS IF NEEDED
 // typedef glm::vec2 Vector2; etc
 // typedef glm::mat4 Matrix4; etc

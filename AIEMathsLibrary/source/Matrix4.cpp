@@ -489,6 +489,7 @@ Vector3T<T> Matrix4T<T>::getEuler()
 TEMPLATE
 void Matrix4T<T>::lookAt(Vector3T<T> eye, Vector3T<T> target, Vector3T<T> up)
 {
+
 	Vector3T<T> zAxis = (target - eye).normalised();
 	Vector3T<T> xAxis = (up * -1).cross(zAxis).normalised();
 	Vector3T<T> yAxis = zAxis.cross(xAxis);
@@ -502,22 +503,36 @@ void Matrix4T<T>::lookAt(Vector3T<T> eye, Vector3T<T> target, Vector3T<T> up)
 	look.identity();
 
 	look[0][0] = xAxis.x;
-	look[1][0] = xAxis.y;
-	look[2][0] = xAxis.z;
+	look[0][1] = xAxis.y;
+	look[0][2] = xAxis.z;
 
-	look[0][1] = yAxis.x;
-	look[1][1] = yAxis.y;
-	look[2][1] = yAxis.z;
+	look[1][0] = yAxis.x;
+	look[1][2] = yAxis.y;
+	look[1][2] = yAxis.z;
 
-	look[0][2] = zAxis.x;
-	look[1][2] = zAxis.y;
+	look[2][0] = zAxis.x;
+	look[2][1] = zAxis.y;
 	look[2][2] = zAxis.z;
 
-	look[3][0] = xDot;
-	look[3][1] = yDot;
-	look[3][2] = zDot;
-
-	look.transpose();
+	look[0][3] = xDot;
+	look[1][3] = yDot;
+	look[2][3] = zDot;
 
 	*this = look;
+}
+
+//3D camera transformation
+TEMPLATE
+void Matrix4T<T>::generateProjection(T fovX, T fovY, T zNear, T zFar)
+{
+	Matrix4T<T> projection = Matrix4T<T>{};
+
+	projection[0][0] = atan(fovX / 2);
+	projection[1][1] = atan(fovY / 2);
+	projection[2][2] = -(zFar + zNear) / (zFar - zNear);
+	projection[3][2] = -(2 * zNear * zFar) / (zFar - zNear);
+	projection[2][3] = -1;
+	projection[3][3] = 0;
+
+	*this = projection;
 }

@@ -249,6 +249,58 @@ public:
 	* @returns void
 	*/
 	MATHSLIBRARY_API void rotateEuler(Vector3T<T> angles);
+
+	/*
+	* getRotationX
+	*
+	* gets the rotation around the X axis of a 3D rotation matrix (a 3D matrix)
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns T - the rotation in radians
+	*/
+	MATHSLIBRARY_API T getRotationX();
+
+	/*
+	* getRotationY
+	*
+	* gets the rotation around the Y axis of a 3D rotation matrix (a 3D matrix)
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns T - the rotation in radians
+	*/
+	MATHSLIBRARY_API T getRotationY();
+
+	/*
+	* getRotationZ
+	*
+	* gets the rotation around the Z axis of a 3D rotation matrix (a 3D matrix)
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns T - the rotation in radians
+	*/
+	MATHSLIBRARY_API T getRotationZ();
+
+	/*
+	* getEuler
+	*
+	* gets the rotation along all axes as euler angles from a 3D rotation matrix
+	* https://gamedev.stackexchange.com/questions/50963/how-to-extract-euler-angles-from-transformation-matrix
+	*
+	* @returns Vector3T<T> - the rotation in radians
+	*/
+	MATHSLIBRARY_API Vector3T<T> getEuler();
+
+	/*
+	* lookAt
+	*
+	* generates a rotation matrix which transforms
+	* a forwards vector into the given direction
+	*
+	* @param Vector3T<T> direction - the direction to generate a rotation matrix from
+	* @param Vector3T<T> up - the global up vector
+	* @returns void
+	*/
+	MATHSLIBRARY_API void lookAt(Vector3T<T> direction, Vector3T<T> up);
 };
 
 using Matrix3 = Matrix3T<float>;

@@ -43,8 +43,6 @@
 
 #endif
 
-static const float DEFAULT_TOLERANCE = 0.00001f;
-
 bool compare(float a, float b, float tolerance = DEFAULT_TOLERANCE) {
 	if (abs(a - b) > tolerance)
 		return false;

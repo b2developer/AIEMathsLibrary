@@ -336,10 +336,126 @@ Vector2T<T> Matrix3T<T>::getScale()
 	return Vector2T<T>{sX, sY};
 }
 
-//gets the rotation along the x axis from 3D matrix
+//gets the rotation along the x axis from 3D matrix (decomposition of a 2D transformation matrix)
 TEMPLATE
 T Matrix3T<T>::getRotation()
 {
 	return (T)atan2(-mat[0][1], mat[0][0]);
+}
+
+//get the rotation around the X axis (decomposition of a 3D rotation matrix)
+TEMPLATE
+T Matrix3T<T>::getRotationX()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix3T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	T roll = 0;
+
+	if (copy.mat[0][0] != 1 && copy.mat[0][0] != -1)
+	{
+		T roll = (T)atan2(-copy.mat[1][2], copy.mat[1][1]);
+	}
+
+	return roll;
+}
+
+//get the rotation around the Y axis (decomposition of a 3D rotation matrix)
+TEMPLATE
+T Matrix3T<T>::getRotationY()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix3T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	T pitch = 0;
+
+	if (copy.mat[0][0] == 1 || copy.mat[0][0] == -1)
+	{
+		T pitch = (T)atan2(copy.mat[0][2], copy.mat[2][3]);
+	}
+	else
+	{
+		T pitch = (T)atan2(-copy.mat[2][0], copy.mat[0][0]);
+	}
+
+	return pitch;
+}
+
+//get the rotation around the Z axis
+TEMPLATE
+T Matrix3T<T>::getRotationZ()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix3T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	T yaw = 0;
+
+	if (copy.mat[0][0] != 1 && copy.mat[0][0] != -1)
+	{
+		T yaw = (T)asin(copy.mat[1][0]);
+	}
+
+	return yaw;
+}
+
+//gets all rotation as euler angles (decomposition of a 3D rotation matrix)
+TEMPLATE
+Vector3T<T> Matrix3T<T>::getEuler()
+{
+	Vector3T<T> scaleVec = getScale();
+	scaleVec = 1 / scaleVec;
+
+	Matrix3T<T> copy = *this;
+	copy.scale(scaleVec); //normalise the matrix copy by applying an inverse scale
+
+	if (copy.mat[0][0] == 1 || copy.mat[0][0] == -1)
+	{
+		T pitch = (T)atan2(copy.mat[0][2], copy.mat[2][3]);
+		return Vector3T<T>{0, pitch, 0};
+	}
+	else
+	{
+		T yaw = (T)asin(copy.mat[0][1]);
+		T pitch = (T)atan2(-copy.mat[0][2], copy.mat[0][0]);
+		T roll = (T)atan2(-copy.mat[2][1], copy.mat[1][1]);
+
+		return Vector3T<T>{roll, pitch, yaw};
+	}
+}
+
+//rotation matrix from directional vector
+TEMPLATE
+void Matrix3T<T>::lookAt(Vector3T<T> direction, Vector3T<T> up)
+{
+	Vector3T<T> zAxis = direction.normalised();
+	Vector3T<T> xAxis = (up * -1).cross(zAxis).normalised();
+	Vector3T<T> yAxis = zAxis.cross(xAxis);
+
+	Matrix3T<T> look;
+
+	look.identity();
+
+	look[0][0] = xAxis.x;
+	look[0][1] = xAxis.y;
+	look[0][2] = xAxis.z;
+
+	look[1][0] = yAxis.x;
+	look[1][1] = yAxis.y;
+	look[1][2] = yAxis.z;
+
+	look[2][0] = zAxis.x;
+	look[2][1] = zAxis.y;
+	look[2][2] = zAxis.z;
+
+	*this = look;
 }
 

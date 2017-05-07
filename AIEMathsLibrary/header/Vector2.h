@@ -195,6 +195,15 @@ public:
 	*/
 	MATHSLIBRARY_API Vector2T<T> normal(NormalDirection direction = NormalDirection::LEFT);
 
+	/*
+	* getRotation
+	*
+	* calculates the orientation of the vector
+	*
+	* @returns T - the rotation of the vector in radians
+	*/
+	MATHSLIBRARY_API T getRotation();
+
 	#pragma region swizzling
 	/*
 	* GetXX

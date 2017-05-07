@@ -1,10 +1,12 @@
 ﻿  Vector4.cpp
   Vector3.cpp
   Vector2.cpp
-  Matrix4.cpp
+c:\users\brad\desktop\aiemathslibrary\trunk\aiemathslibrary\source\vector2.cpp(168): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  c:\users\brad\desktop\aiemathslibrary\trunk\aiemathslibrary\source\vector2.cpp(166): note: while compiling class template member function 'float Vector2T<float>::getRotation(void)'
+  c:\users\brad\desktop\aiemathslibrary\trunk\aiemathslibrary\source\vector2.cpp(8): note: see reference to class template instantiation 'Vector2T<float>' being compiled
   Matrix3.cpp
   Matrix2.cpp
   Generating Code...
-     Creating library C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.lib and object C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.exp
-  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.dll
-  AIEMathsLibrary.vcxproj -> C:\Users\s171541\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.pdb (Partial PDB)
+     Creating library C:\Users\Brad\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.lib and object C:\Users\Brad\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.exp
+  AIEMathsLibrary.vcxproj -> C:\Users\Brad\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.dll
+  AIEMathsLibrary.vcxproj -> C:\Users\Brad\Desktop\AIEMathsLibrary\trunk\\bin\AIEMathsLibrary_DEBUG.pdb (Partial PDB)

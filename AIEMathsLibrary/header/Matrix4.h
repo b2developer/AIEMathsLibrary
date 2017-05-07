@@ -306,6 +306,21 @@ public:
 	*/
 	MATHSLIBRARY_API void lookAt(Vector3T<T> eye, Vector3T<T> target, Vector3T<T> up);
 
+	/*
+	* generateProjection
+	*
+	* creates a matrix that will transform a point as if
+	* an observer was looking at it with a camera
+	* http://www.codinglabs.net/article_world_view_projection_matrix.aspx
+	*
+	* @param T fovX - field of view along the x axis (must be less than PI)
+	* @param T fovY - field of view along the y axis (must be less than PI)
+	* @param T zNear - the near clipping plane, anything closer will be clamped
+	* @param T zFar - the far clipping plane, anything further will be clamped
+	* @returns void
+	*/
+	MATHSLIBRARY_API void generateProjection(T fovX, T fovY, T zNear, T zFar);
+
 };
 
 using Matrix4 = Matrix4T<float>;
