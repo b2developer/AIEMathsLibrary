@@ -1,9 +1,7 @@
 ﻿  Vector4.cpp
   Vector3.cpp
   Vector2.cpp
-c:\users\brad\desktop\aiemathslibrary\trunk\aiemathslibrary\source\vector2.cpp(168): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  c:\users\brad\desktop\aiemathslibrary\trunk\aiemathslibrary\source\vector2.cpp(166): note: while compiling class template member function 'float Vector2T<float>::getRotation(void)'
-  c:\users\brad\desktop\aiemathslibrary\trunk\aiemathslibrary\source\vector2.cpp(8): note: see reference to class template instantiation 'Vector2T<float>' being compiled
+  Matrix4.cpp
   Matrix3.cpp
   Matrix2.cpp
   Generating Code...

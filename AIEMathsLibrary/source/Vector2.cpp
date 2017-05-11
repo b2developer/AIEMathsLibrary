@@ -165,7 +165,7 @@ TEMPLATE
 T Vector2T<T>::getRotation()
 {
 	//atan2 achieves this
-	return atan2(y, x);
+	return (T)atan2(y, x);
 }
 
 #pragma region swizzling

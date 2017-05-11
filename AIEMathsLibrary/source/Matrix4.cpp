@@ -410,7 +410,7 @@ T Matrix4T<T>::getRotationX()
 
 	if (copy.mat[0][0] != 1 && copy.mat[0][0] != -1)
 	{
-		T roll = (T)atan2(-copy.mat[1][2], copy.mat[1][1]);
+		roll = (T)atan2(-copy.mat[1][2], copy.mat[1][1]);
 	}
 
 	return roll;
@@ -430,11 +430,11 @@ T Matrix4T<T>::getRotationY()
 
 	if (copy.mat[0][0] == 1 || copy.mat[0][0] == -1)
 	{
-		T pitch = (T)atan2(copy.mat[0][2], copy.mat[2][3]);
+		pitch = (T)atan2(copy.mat[0][2], copy.mat[2][3]);
 	}
 	else
 	{
-		T pitch = (T)atan2(-copy.mat[2][0], copy.mat[0][0]);
+		pitch = (T)atan2(-copy.mat[2][0], copy.mat[0][0]);
 	}
 
 	return pitch;
@@ -454,7 +454,7 @@ T Matrix4T<T>::getRotationZ()
 
 	if (copy.mat[0][0] != 1 && copy.mat[0][0] != -1)
 	{
-		T yaw = (T)asin(copy.mat[1][0]);
+		yaw = (T)asin(copy.mat[1][0]);
 	}
 
 	return yaw;
@@ -527,8 +527,8 @@ void Matrix4T<T>::generateProjection(T fovX, T fovY, T zNear, T zFar)
 {
 	Matrix4T<T> projection = Matrix4T<T>{};
 
-	projection[0][0] = atan(fovX / 2);
-	projection[1][1] = atan(fovY / 2);
+	projection[0][0] = (T)atan(fovX / 2);
+	projection[1][1] = (T)atan(fovY / 2);
 	projection[2][2] = -(zFar + zNear) / (zFar - zNear);
 	projection[3][2] = -(2 * zNear * zFar) / (zFar - zNear);
 	projection[2][3] = -1;
